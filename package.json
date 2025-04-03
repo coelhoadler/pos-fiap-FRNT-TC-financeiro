@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "dbserver":"json-server --watch src/app/database/db.json --port 4000"
+    "dbserver":"json-server --watch src/app/database/db.json --port 4000",
+    "commit": "git add . && git cz"
   },
   "dependencies": {
     "env-cmd": "^10.1.0",
