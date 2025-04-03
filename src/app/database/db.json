@@ -3,32 +3,14 @@
         "name": "Joana",
         "middleName": "Cristina",
         "lastName": "Silva",
-        "fullName": "Joana Cristana Silva"
+        "fullName": "Joana Cristana Silva",
+        "accountNumber": "123456789"
     },
     "account":{
+        "accountNumber":"123456789",
         "balance": 0,
         "currency": "BRL",
-        "accountType": "Conta Corrente",
-        "transactions": [
-            {
-                "id": 1,
-                "date": "2023-01-01",
-                "amount": -50.00,
-                "typeTransaction": "Câmbio e Moedas"
-            },
-            {
-                "id": 2,
-                "date": "2023-01-02",
-                "amount": -20.00,
-                "typeTransaction": "DOC/TED"
-            },
-            {
-                "id": 3,
-                "date": "2023-01-03",
-                "amount": 100.00,
-                "typeTransaction": "Empréstimo e Financiamento"
-            }
-        ]
+        "accountType": "Conta Corrente"
     },
     "typeTransaction":[
         {"id": 1, "description": "Câmbio e Moedas"},
@@ -47,6 +29,29 @@
         {"id":2, "description": "Transfência" },
         {"id":3, "description": "Investimentos" },
         {"id":4, "description": "Outros serviços" }
+    ],
+    "transactions": [
+        {
+            "id": 1,
+            "date": "2023-01-01",
+            "amount": -50.00,
+            "typeTransaction": "Câmbio e Moedas",
+            "accountNumber":"123456789"
+        },
+        {
+            "id": 2,
+            "date": "2023-01-02",
+            "amount": -20.00,
+            "typeTransaction": "DOC/TED",
+             "accountNumber":"123456789"
+        },
+        {
+            "id": 3,
+            "date": "2023-01-03",
+            "amount": 100.00,
+            "typeTransaction": "Empréstimo e Financiamento",
+             "accountNumber":"123456789"
+        }
     ]
 
 }
