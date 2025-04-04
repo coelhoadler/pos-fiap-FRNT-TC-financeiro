@@ -1,22 +1,24 @@
-:root {
-    --color-primary: rgb(0, 77, 97);
-    --color-primary-hover: rgb(13, 101, 122);
-    --color-secondary: rgb(203, 203, 203);
+@import "tailwindcss";
+
+@theme{
+    --color-primary: #004d61;
+    --color-primary-hover: #0d657a;
+    --color-secondary: #cbcbcb;
     --color-success: #28a745;
-    --color-danger: rgb(220, 53, 69);
-    --color-warning: rgb(255, 193, 7);
-    --color-info: rgb(23, 162, 184);
-    --color-light: rgb(248, 249, 250);
-    --color-dark: rgb(52, 58, 64);
-    --color-white: rgb(255, 255, 255);
-    --color-black: rgb(0, 0, 0);
-    --color-gray-100: rgb(248, 248, 248);
-    --color-gray-200: rgb(222, 233, 234);
-    --color-gray-300: rgb(222, 226, 230);
-    --color-gray-400: rgb(206, 212, 218);
-    --color-gray-500: rgb(173, 181, 189);
-    --color-gray-600: rgb(108, 117, 125);
-    --color-gray-700: rgb(73, 80, 87);
-    --color-gray-800: rgb(52, 58, 64);
-    --color-gray-900: rgb(33, 37, 41);
+    --color-danger: #dc3545;
+    --color-warning: #ffc107;
+    --color-info: #17a2b8;
+    --color-light: #f8f9fa;
+    --color-dark: #343a40;
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-gray-100: #f8f8f8;
+    --color-gray-200: #dee9ea;
+    --color-gray-300: #dee2e6;
+    --color-gray-400: #ced4da;
+    --color-gray-500: #adb5bd;
+    --color-gray-600: #6c757d;
+    --color-gray-700: #495057;
+    --color-gray-800: #343a40;
+    --color-gray-900: #212529;
 }

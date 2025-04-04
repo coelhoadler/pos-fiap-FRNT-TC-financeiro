@@ -6,7 +6,7 @@ export default function Home() {
         <>
             <h1 style={{ color: 'var(--color-danger)' }}>Inline CSS</h1>
             <h2 className="text-[var(--color-warning)]">Tailwind direto com colchete</h2>
-            <h3 className="text-danger">Classe personalizada via Tailwind</h3>
+            <h3 className="text-success">Classe personalizada via Tailwind</h3>
         </>
     );
 }

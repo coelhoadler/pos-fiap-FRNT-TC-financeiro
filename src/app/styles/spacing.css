@@ -1,4 +1,6 @@
-:root {
+@import "tailwindcss";
+
+@theme {
     --spacing-xxs: 4px;
     --spacing-xs: 8px;
     --spacing-sm: 12px;
