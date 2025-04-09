@@ -24,14 +24,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <section className='h-screen w-screen flex items-center justify-center min-w-[360px]'>
-          <div className="w-[80%] grid gap-4 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3">
-            <div className="flex sm:justify-center lg:justify-start sm:items-center lg:items-start justify-center items-center">Aqui vai o menu (desktop/tablet)</div>
-            <div className="flex sm:justify-center lg:justify-center items-center sm:items-center grow-1 justify-center">{children}</div>
-            <div className="flex lg:justify-end sm:justify-center items-end sm:items-center justify-center">aqui vai o componente de extrato</div>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}>
+        <header className="flex justify-between items-center bg-white h-[96px]">meu header</header>
+        <main className='h-auto w-screen flex items-center justify-center min-w-[360px]'>
+          <div className="lg:grid-cols-3 md:grid-cols-1 w-[80%] grid gap-4 grid-cols-1">
+            <div className="lg:justify-start lg:items-start flex  justify-center items-center">Aqui vai o menu (desktop/tablet)</div>
+            <div className="lg:justify-center items-center flex grow-1 justify-center">{children}</div>
+            <div className="lg:justify-end md:items-end  flex justify-center items-center">aqui vai o componente de extrato</div>
           </div>
-        </section>
+        </main>
       </body>
     </html>
   );

@@ -1,11 +1,8 @@
-import '@/app/styles/globals.css';
-
-
 export default function Home() {
     return (
-        <>
-            <h1>caindo aqui na home</h1>
-            <h1>hello world</h1>
-        </>
+        <section className='flex flex-col gap-4'>
+            <h1> -> card de boas vindas</h1>
+            <h1> -> card de adicionar novo extrato</h1>
+        </section>
     );
 }
