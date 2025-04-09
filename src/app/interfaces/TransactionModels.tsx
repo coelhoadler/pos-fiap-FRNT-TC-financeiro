@@ -3,7 +3,6 @@ export interface ITypeTransaction{
   description: string
 }
 
-
 export interface ITypeTransactionResponse {
     data: ITypeTransaction[]
     status: number

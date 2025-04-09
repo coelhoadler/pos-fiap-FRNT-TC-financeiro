@@ -27,12 +27,12 @@ export default function RootLayout({
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}>
-        <header className="flex justify-between items-center bg-white h-[96px]">meu header</header>
+        <header className="flex justify-between items-center bg-white h-[96px] mb-10 p-1.5">meu header</header>
         <main className='h-auto w-screen flex items-center justify-center min-w-[360px]'>
           <div className="lg:grid-cols-3 md:grid-cols-1 w-[80%] grid gap-4 grid-cols-1">
             <div className="lg:justify-start lg:items-start flex  justify-center items-center">Aqui vai o menu (desktop/tablet)</div>
             <div className="lg:justify-center items-center flex grow-1 justify-center">{children}</div>
-            <div className="lg:justify-end md:items-end  flex justify-center items-center">aqui vai o componente de extrato</div>
+            <div className="lg:justify-start lg:items-start md:items-end flex justify-center items-center">aqui vai o componente de extrato</div>
           </div>
         </main>
       </body>
