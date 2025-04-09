@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "dbserver": "json-server --watch src/app/database/db.json --port 4000",
-    "commit": "git add . && git cz"
+    "commit": "git add . && git cz",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "autoprefixer": "^10.4.21",
@@ -23,7 +25,15 @@
     "tailwindcss": "^4.1.2"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^3.2.6",
     "@eslint/eslintrc": "^3",
+    "@storybook/addon-essentials": "^8.6.12",
+    "@storybook/addon-onboarding": "^8.6.12",
+    "@storybook/blocks": "^8.6.12",
+    "@storybook/experimental-addon-test": "^8.6.12",
+    "@storybook/experimental-nextjs-vite": "^8.6.12",
+    "@storybook/react": "^8.6.12",
+    "@storybook/test": "^8.6.12",
     "@tailwindcss/postcss": "^4.1.2",
     "@types/axios": "^0.14.4",
     "@types/node": "^20",
@@ -34,11 +44,20 @@
     "commitizen": "^4.3.1",
     "eslint": "^9",
     "eslint-config-next": "15.2.4",
-    "typescript": "^5"
+    "eslint-plugin-storybook": "^0.12.0",
+    "playwright": "^1.51.1",
+    "storybook": "^8.6.12",
+    "typescript": "^5",
+    "vitest": "^3.1.1"
   },
   "config": {
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:storybook/recommended"
+    ]
   }
 }
