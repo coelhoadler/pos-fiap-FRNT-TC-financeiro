@@ -10,7 +10,8 @@ export type THeader = {
 const Header = ({ nameUser }: THeader) => {
   return (
     <header className="flex justify-between items-center bg-primary h-[96px] mb-10 p-1.5">
-      <div className="max-w-[1366px] m-auto w-full max-lg:max-w-full px-[15px]">
+      <div className="max-w-[1366px] m-auto w-full max-lg:max-w-full px-[15px] max-md:flex max-md:items-center">
+        <MobileMenu />
         <div className="flex justify-end items-center gap-10 w-full">
           <p className="font-bold text-sm font-family-base text-white">
             {nameUser}
@@ -24,7 +25,6 @@ const Header = ({ nameUser }: THeader) => {
               alt="Minha conta"
             />
           </div>
-          <MobileMenu />
         </div>
       </div>
     </header>
