@@ -1,8 +1,8 @@
 'use client'
 
-import { getTypeTransaction } from "@/app/api/transactionServices/transactionServices";
+import { getTypeTransaction } from "@/app/api/TransactionServices/TransactionServices";
 import { IInputs } from "@/app/interfaces/Form";
-import { ITypeTransaction } from "@/app/interfaces/transaction";
+import { ITypeTransaction } from "@/app/interfaces/TransactionModels";
 import { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 

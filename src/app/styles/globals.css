@@ -1,10 +1,7 @@
-@import "tailwindcss";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-
-@import './borderRadius.css';
 @import './colors.css';
 @import './spacing.css';
 @import './typography.css';
+
+body {
+    background-color: var(--background-color);
+}

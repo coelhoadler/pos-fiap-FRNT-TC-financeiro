@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Executores do projeto --> Adler Coelho - Erick - Robson - Luiz Paulo - Virgílio Cano
 
-## Getting Started
+Este é um projeto feito com a biblioteca Next.js, cujo objetivo é representar
+transações financeiras de um usuário.
 
-First, run the development server:
+## Passo importante
+
+Execute o comando abaixo para instalar os pacotes necessários do projeto
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+        npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Inicialização do projeto
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Primeiro, execute o servidor de desenvolvimento:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+      npm run dev
+```
 
-## Learn More
+Segundo, abrir [http://localhost:3000](http://localhost:3000) em seu navegador para ver o resultado.
 
-To learn more about Next.js, take a look at the following resources:
+### Segue abaixo descrição das bibliotecas utilizadas no projeto, com base no arquivo `package.json`:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Dependências principais (`dependencies`):
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **autoprefixer**: Adiciona prefixos específicos do navegador automaticamente para CSS.
+- **axios**: Cliente HTTP para realizar requisições.
+- **env-cmd**: Gerencia variáveis de ambiente.
+- **json-server**: Cria uma API REST fake rapidamente com base em um arquivo JSON.
+- **next**: Framework React para renderização do lado do servidor e geração de
 
-## Deploy on Vercel
+### Dependências de desenvolvimento (`devDependencies`):
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **@chromatic-com/storybook**: Integração do Storybook com Chromatic para testes visuais.
+- **@eslint/eslintrc**: Configuração do ESLint.
+- **@storybook/addon-essentials**: Conjunto essencial de addons para o Storybook.
+- **@storybook/addon-onboarding**: Addon para onboarding no Storybook.
+- **@storybook/blocks**: Componentes React para criar histórias no Storybook.
+- **@storybook/experimental-addon-test**: Addon experimental para testes no Storybook.
+- **@storybook/experimental-next**:
+- **@storybook/experimental-nextjs-vite**: Suporte experimental para Next.js com Vite no Storybook.
+- **@storybook/react**: Suporte para React no Storybook.
+- **@storybook/test**: Ferramentas de teste para o Storybook.
+- **@tailwindcss/postcss**: Integração do Tailwind CSS com PostCSS.
+- **@types/axios**: Tipos TypeScript para Axios.
+- **@types/node**: Tipos TypeScript para Node.js.
+- **@types/react**: Tipos TypeScript para React.
+- **commitizen**: Ferramenta para padronizar mensagens de commit.
+- **eslint**: Ferramenta para análise de código JavaS
