@@ -8,6 +8,9 @@ import {
 } from "@headlessui/react";
 import React, { useEffect, useState } from "react";
 
+export type TMenu = {
+  onClickItem?: () => void;
+};
 export type TMenuItem = {
   title: string;
   path: string;
@@ -24,15 +27,15 @@ const menuItems: TMenuItem[] = [
   },
   {
     title: "Investimentos",
-    path: "#",
+    path: "#investimentos",
   },
   {
     title: "Outros serviços",
-    path: "#",
+    path: "#outros-servicos",
   },
 ];
 
-const DesktopMenu = () => {
+const MenuItens = ({ onClickItem }: TMenu) => {
   const pathname = usePathname();
   const [activeItem, setActiveItem] = useState<string>("Inicio");
 
@@ -50,32 +53,53 @@ const DesktopMenu = () => {
       if (target) {
         target.scrollIntoView({ behavior: "smooth" });
       }
+      if (onClickItem) {
+        setTimeout(() => {
+          onClickItem();
+        }, 140);
+      }
+    }
+
+    if (onClickItem) {
+      onClickItem();
     }
   };
 
   return (
-    <div>
-      <div>
-        {menuItems.map((item, index) => (
-          <a
-            key={index}
-            href={item.path}
-            onClick={() => handleClick(item)}
-            className={item.title === activeItem ? "active" : ""}
-            title={item.title}
-          >
-            {item.title}
-          </a>
-        ))}
+    <>
+      {menuItems.map((item, index) => (
+        <a
+          key={index}
+          href={item.path}
+          onClick={() => handleClick(item)}
+          className={`text-primary text-base font-family-base max-lg:border-0 pb-2 max-lg:mb-0 transition-all border-b border-primary mb-2 w-full text-center max-w-[50%] max-sm:pb-3 max-sm:mb-3 max-sm:max-w-[80%] ${
+            item.title === activeItem
+              ? "font-bold border-b-2 max-lg:border-b-2 max-lg:text-link max-lg:border-link max-sm:text-secondary"
+              : "font-normal"
+          }`}
+          title={item.title}
+        >
+          {item.title}
+        </a>
+      ))}
+    </>
+  );
+};
+
+const DesktopMenu = () => {
+  return (
+    <div className="h-full p-0 bg-gray-200 rounded-lg w-full max-lg:bg-transparent lg:p-10">
+      <div className="flex lg:flex-col items-center justify-center max-lg:gap-5">
+        <MenuItens />
       </div>
     </div>
   );
 };
 
-const MobileMenu = ({}) => {
+const MobileMenu = () => {
   return (
     <Disclosure as="nav" className="md:hidden flex items-center">
-      {({ open }) => (
+      {({ open, close }) => (
         <>
           <DisclosureButton className="text-gray-700 hover:text-black focus:outline-none">
             {open ? (
@@ -85,20 +109,16 @@ const MobileMenu = ({}) => {
                 width={30}
                 height={30}
                 src={"/svg/hamburger-menu-icon.svg"}
-                alt={"Abri Menu"}
+                alt={"Abrir Menu"}
               />
             )}
           </DisclosureButton>
           <div
-            className={`transition-all duration-500 fixed  w-full top-0 h-screen z-30 bg-[#E4EDE3]  p-4 ${
+            className={`transition-all duration-500 fixed w-full top-0 h-screen z-30 bg-[#E4EDE3] p-4 ${
               open ? "right-0" : "right-[100%]"
             }`}
           >
-            <DisclosurePanel
-              className={`flex flex-col px-4 pb-4 space-y-2 items-end  ${
-                open ? "" : ""
-              }`}
-            >
+            <DisclosurePanel className="flex flex-col px-4 pb-4 space-y-2 items-end mt-4">
               <DisclosureButton className="text-gray-700 hover:text-black focus:outline-none">
                 {open ? (
                   <Image
@@ -111,12 +131,8 @@ const MobileMenu = ({}) => {
                   ""
                 )}
               </DisclosureButton>
-              <div className="flex flex-col items-center justify-center w-full">
-                {menuItems.map((item, index) => (
-                  <a key={index} href={item.path} title={item.title}>
-                    {item.title}
-                  </a>
-                ))}
+              <div className="flex flex-col items-center justify-center w-full mt-6">
+                <MenuItens onClickItem={close} />
               </div>
             </DisclosurePanel>
           </div>
@@ -126,4 +142,4 @@ const MobileMenu = ({}) => {
   );
 };
 
-export { MobileMenu, DesktopMenu };
+export { MenuItens, MobileMenu, DesktopMenu };

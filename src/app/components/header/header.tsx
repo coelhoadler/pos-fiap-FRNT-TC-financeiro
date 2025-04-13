@@ -9,7 +9,7 @@ export type THeader = {
 
 const Header = ({ nameUser }: THeader) => {
   return (
-    <header className="flex justify-between items-center bg-primary h-[96px] mb-10 p-1.5">
+    <header className="flex justify-between items-center bg-primary h-[96px] p-1.5 fixed w-full z-30">
       <div className="max-w-[1366px] m-auto w-full max-lg:max-w-full px-[15px] max-md:flex max-md:items-center">
         <MobileMenu />
         <div className="flex justify-end items-center gap-10 w-full">
@@ -17,7 +17,8 @@ const Header = ({ nameUser }: THeader) => {
             {nameUser}
           </p>
 
-          <div>
+          <div className="relative">
+            <a className="w-full h-full block left-0 right-0 top-0 bottom-0 m-auto absolute text-[0px]" href="/profile">Meu Perfil</a>
             <Image
               width={40}
               height={40}
