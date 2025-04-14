@@ -1,6 +1,6 @@
 'use client'
 
-import { getTypeTransaction } from "@/app/api/TransactionServices/TransactionServices";
+import { getTypeTransaction } from "@/app/api/transactionServices/transactionServices";
 import { IInputs } from "@/app/interfaces/Form";
 import { ITypeTransaction } from "@/app/interfaces/TransactionModels";
 import { useEffect, useState } from "react";
