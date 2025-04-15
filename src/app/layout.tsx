@@ -29,18 +29,18 @@ export default function RootLayout({
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden scroll-smooth`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden scroll-smooth min-w-[1920px]`}
       >
         <Header nameUser={"Joana da Silva Oliveira"} />
         <main className="h-auto w-screen flex items-center justify-center min-w-[360px] pt-[150px] max-sm:pt-[116px]">
-          <div className="lg:grid-cols-3 md:grid-cols-1 w-[80%] grid gap-4 grid-cols-1">
-            <div className="lg:justify-start lg:items-start max-sm:hidden flex  justify-center items-center">
+          <div className="lg:grid-cols-[250px_minmax(690px,_900px)_250px] lg:grid-colums md:grid-cols-1 w-[80%] grid gap-3 grid-cols-1">
+            <div className="lg:justify-center lg:items-start max-sm:hidden flex justify-center items-center box-content grow-1">
               <DesktopMenu />
             </div>
-            <div className="lg:justify-center items-center flex grow-1 justify-center">
+            <div className="lg:justify-center items-center flex grow-3 justify-center">
               {children}
             </div>
-            <div className="lg:justify-start lg:items-start md:items-end flex justify-center items-center">
+            <div className="lg:justify-center lg:items-start md:items-end flex justify-center items-center grow-1">
               aqui vai o componente de extrato
             </div>
           </div>

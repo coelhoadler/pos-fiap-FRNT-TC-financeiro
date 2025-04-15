@@ -72,7 +72,7 @@ const MenuItens = ({ onClickItem }: TMenu) => {
           key={index}
           href={item.path}
           onClick={() => handleClick(item)}
-          className={`text-primary text-base font-family-base max-lg:border-0 pb-2 max-lg:mb-0 transition-all border-b border-primary mb-2 w-full text-center max-w-[50%] max-sm:pb-3 max-sm:mb-3 max-sm:max-w-[80%] ${
+          className={`text-primary text-base font-family-base max-lg:border-0 pb-2 max-lg:mb-0 transition-all border-b border-primary mb-2 w-full text-center max-w-[100%] max-sm:pb-3 max-sm:mb-3 max-sm:max-w-[80%] ${
             item.title === activeItem
               ? "font-bold border-b-2 max-lg:border-b-2 max-lg:text-link max-lg:border-link max-sm:text-secondary"
               : "font-normal"
@@ -88,7 +88,7 @@ const MenuItens = ({ onClickItem }: TMenu) => {
 
 const DesktopMenu = () => {
   return (
-    <div className="h-full p-0 bg-gray-200 rounded-lg w-full max-lg:bg-transparent lg:p-10">
+    <div className="h-full p-0 bg-gray-200 rounded-lg w-full max-lg:bg-transparent lg:p-8 shadow-md">
       <div className="flex lg:flex-col items-center justify-center max-lg:gap-5">
         <MenuItens />
       </div>
