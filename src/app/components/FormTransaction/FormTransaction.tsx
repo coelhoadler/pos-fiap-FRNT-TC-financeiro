@@ -5,6 +5,7 @@ import { IInputs } from "@/app/interfaces/form";
 import { ITypeTransaction } from "@/app/interfaces/transactionModels";
 import { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
+import Image from "next/image";
 
 const FormTransaction = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<IInputs>()
@@ -26,19 +27,26 @@ const FormTransaction = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="relative bg-gray-300 sm:min-h-[350px] w-full md:min-w-[320px] rounded-[10px] shadow-md p-6 mb-6 text-tertiary"
->
+      className="relative bg-gray-300 min-h-[633px] md:min-h-[478px] w-full min-w-[320px] rounded-[10px] shadow-md p-6 text-tertiary z-2"
+    >
+      <Image
+        width={146}
+        height={144}
+        src={"/bg-card-transaction.png"}
+        alt={"Fundo quadriculado do card de transação financeira"}
+        className="absolute top-0 right-0 max-h-[144px] max-w-[146px] z-[-1]"
+      />
 
-      <div>
+      <div className="flex flex-col">
         <label
           htmlFor="type-transaction-option"
-          className="block text-sm font-medium text-gray mb-1 mt-5"
+          className="block text-xl font-bold mb-5"
         >
-          Tipo de transação
+          Nova transação
         </label>
         <select
           id="type-transaction-option"
-          className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-6"
+          className="w-[355px] h-[48px] border-solid border-1 border-primary rounded p-16 bg-white text-black px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none mb-3"
           {...register('typeTransaction', { required: true })}
         >
           <option value="">Selecione uma opção</option>
@@ -57,36 +65,51 @@ const FormTransaction = () => {
 
         {
           errors.typeTransaction && (
-            <span className="text-sm text-red-500">Campo obrigatório</span>
+            <span className="text-sm text-red-600 mb-3">Campo obrigatório</span>
           )
         }
-
       </div>
 
-      <div>
+      <div className="flex flex-col">
         <label
           htmlFor="value"
-          className="block text-sm font-medium text-gray-700 mb-1"
+          className="block text-md font-bold mb-3"
         >
           Valor
         </label>
         <input
           type="number"
           id="value"
-          className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-6"
+          className="w-[250px] h-[48px] border-solid border-1 border-primary rounded p-16 bg-white text-black px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none mb-3"
           {...register('value', { required: true })}
         />
         {errors.value && (
-          <span className="text-sm text-red-500">Campo obrigatório</span>
+          <span className="text-sm text-red-600 mb-3">Campo obrigatório</span>
         )}
       </div>
 
       <button
         type="submit"
-        className="w-full bg-primary hover:bg-primary-hover text-white py-2 px-4 rounded transition font-medium"
+        className="w-[250px] h-[48px] bg-primary cursor-pointer text-white py-2 px-4 rounded-[8px] transition font-medium mt-6"
       >
         Concluir transação
       </button>
+
+      <Image
+        width={283}
+        height={228}
+        src={"/woman-credit-card.png"}
+        alt={"Ícone de mulher com cartão de crédito"}
+        className="absolute bottom-5 right-5 max-h-[228px] max-w-[283px] z-[-1]"
+      />
+
+      <Image
+        width={283}
+        height={228}
+        src={"/bg-card-transaction.png"}
+        alt={"Fundo quadriculado do card de transação financeira"}
+        className="absolute bottom-0 left-0 max-h-[177px] max-w-[180px] rotate-180 z-[-1]"
+      />      
     </form>
 
   )

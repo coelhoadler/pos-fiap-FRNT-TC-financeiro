@@ -11,7 +11,7 @@ export default function CardBalance({ balance: valueStart }: { balance: number }
         height={177}
         src={"/bg-card-transaction.png"}
         alt={"Fundo quadriculado do card de balanço financeiro"}
-        className="absolute top-0 right-0 max-h-[177px] max-w-[180px] opacity-30"
+        className="absolute top-0 right-0 max-h-[177px] max-w-[180px] opacity-30 scale-y-[-1] rotate-270 z-1"
       />
 
       <div className="flex flex-col justify-between max-sm:text-center max-sm:p-12 max-sm:pb-1 max-sm:w-full w-1/2 z-20">
@@ -28,7 +28,6 @@ export default function CardBalance({ balance: valueStart }: { balance: number }
         </div>
         <span className="text-base pt-4">Conta Corrente</span>
         <span className="text-3xl pt-1">{saldoFormato}</span>
-        {/* TODO: Adicionar imagens quando table ou mobile */}
       </div>
 
       <Image
@@ -36,16 +35,16 @@ export default function CardBalance({ balance: valueStart }: { balance: number }
         height={228}
         src={"/banker.png"}
         alt={"Ícone de banqueiro"}
-        className="absolute bottom-0 left-32 max-h-[177px] max-w-[180px]"
-      /> 
+        className="absolute bottom-3 left-10 max-h-[228px] max-w-[283px] z-2"
+      />
 
       <Image
         width={180}
         height={177}
         src={"/bg-card-transaction.png"}
         alt={"Fundo quadriculado do card de balanço financeiro"}
-        className="absolute bottom-0 left-0 max-h-[177px] max-w-[180px] opacity-30"
-      />      
+        className="absolute bottom-0 left-0 max-h-[177px] max-w-[180px] opacity-30 scale-y-[-1] rotate-90 z-1"
+      />
     </div>
   );
 }

@@ -88,7 +88,7 @@ const MenuItens = ({ onClickItem }: TMenu) => {
 
 const DesktopMenu = () => {
   return (
-    <div className="h-full p-0 bg-gray-200 rounded-lg w-full max-lg:bg-transparent lg:p-8 shadow-md">
+    <div className="h-full p-0 bg-gray-200 rounded-lg w-full max-lg:bg-transparent lg:p-8 lg:shadow-md">
       <div className="flex lg:flex-col items-center justify-center max-lg:gap-5">
         <MenuItens />
       </div>
