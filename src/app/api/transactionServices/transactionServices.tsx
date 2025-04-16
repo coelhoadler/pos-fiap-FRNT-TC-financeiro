@@ -1,7 +1,7 @@
 'use client'
 
 import axiosClient from '../AxiosClient';
-import { ITypeTransaction } from '../../interfaces/TransactionModels';
+import { ITypeTransaction } from '../../interfaces/transactionModels';
 
 export const getTypeTransaction = async () => {
     try {
