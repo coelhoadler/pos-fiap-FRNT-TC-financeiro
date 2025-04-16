@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./styles/globals.css";
 import Header from "./components/header/header";
 import { DesktopMenu } from "./components/menu/menu";
+import AccountStatement from "./components/accountStatement/AccountStatement";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,7 +42,7 @@ export default function RootLayout({
               {children}
             </div>
             <div className="lg:justify-center lg:items-start md:items-end flex justify-center items-center grow-1">
-              aqui vai o componente de extrato
+              <AccountStatement />
             </div>
           </div>
         </main>
