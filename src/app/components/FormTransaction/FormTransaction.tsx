@@ -1,26 +1,43 @@
 'use client'
 
-import { getTypeTransaction } from "@/app/api/transactionServices/transactionServices";
-import { IInputs } from "@/app/interfaces/form";
-import { ITypeTransaction } from "@/app/interfaces/transactionModels";
 import { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Image from "next/image";
+import { IInputs } from "@/app/interfaces/Form";
+import { ITransaction, ITypeTransaction } from "@/app/interfaces/TransactionModels";
+import { typeTransactionService } from "@/app/api/typeTransactionService/typeTransactionServices";
+import { transactionServices } from "@/app/api/transactionServices/transactionServices";
 
 const FormTransaction = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm<IInputs>()
+  const { register, handleSubmit, watch, formState: { errors } } = useForm<IInputs>()
   const [typeTransactionOptions, setTypeTransactionOptions] = useState<ITypeTransaction[]>([])
 
   useEffect(() => {
     const fetchTypeTransaction = async () => {
-      const responseData = await getTypeTransaction()
+      
+      const responseData = await typeTransactionService.getAll()
       setTypeTransactionOptions(responseData || [])
     }
 
     fetchTypeTransaction();
   }, []);
 
-  const onSubmit: SubmitHandler<IInputs> = () => {
+  const onSubmit: SubmitHandler<IInputs> = async () => {
+    
+    const optionId = watch('typeTransaction')
+    
+    const typeDescription = typeTransactionOptions.find((option) => option.id === optionId)?.description || ''
+    
+    const form: ITransaction = {
+      typeTrasaction: { id: optionId, description: typeDescription },
+      amount: watch('value'),
+      date: new Date(),
+      accountNumber: '123456789',
+    }
+
+    await transactionServices.create(form)
+
+
     return alert("Transação realizada com sucesso!");
   }
 
