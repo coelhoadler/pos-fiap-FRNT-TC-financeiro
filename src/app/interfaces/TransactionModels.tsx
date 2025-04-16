@@ -1,10 +1,10 @@
 export interface ITypeTransaction{
-  id: number,
+  id: string,
   description: string
 }
-
-export interface ITypeTransactionResponse {
-    data: ITypeTransaction[]
-    status: number
-    statusText: string
+export interface ITransaction{
+  typeTrasaction: ITypeTransaction,
+  amount: number,
+  date: Date,
+  accountNumber: string
 }
