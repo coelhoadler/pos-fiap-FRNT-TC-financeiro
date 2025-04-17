@@ -34,7 +34,7 @@ export default function RootLayout({
       >
         <Header nameUser={"Joana da Silva Oliveira"} />
         <main className="h-auto w-screen flex items-center justify-center min-w-[460px] pt-[150px] max-sm:pt-[116px]">
-          <div className="lg:grid-cols-[250px_auto_250px] lg:grid-colums md:grid-cols-1 w-[80%] grid gap-3 grid-cols-1">
+          <div className="lg:grid-cols-[250px_auto_350px] lg:grid-colums md:grid-cols-1 w-[80%] grid gap-3 grid-cols-1">
             <div className="lg:justify-center lg:items-start max-sm:hidden flex justify-center items-center box-content grow-1">
               <DesktopMenu />
             </div>
