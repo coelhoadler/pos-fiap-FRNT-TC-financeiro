@@ -88,7 +88,7 @@ const FormTransaction = () => {
         }
       </div>
 
-      <div className="flex flex-col">
+      <div className="flex flex-col mb-6">
         <label
           htmlFor="value"
           className="block text-md font-bold mb-3"
@@ -106,7 +106,7 @@ const FormTransaction = () => {
         )}
       </div>
 
-      <Button type="submit" label="Concluir transação" />
+      <Button primary type="submit" label="Concluir transação" />
 
       <Image
         width={283}

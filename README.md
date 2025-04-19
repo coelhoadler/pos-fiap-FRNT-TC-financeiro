@@ -1,14 +1,35 @@
-## Executores do projeto --> Adler Coelho - Erick - Robson - Luiz Paulo - Virgílio Cano
+## Executores do projeto 
+- Adler Coelho
+- Erick 
+- Robson 
+- Luiz Paulo 
+- Virgílio Cano
 
-Este é um projeto feito com a biblioteca Next.js, cujo objetivo é representar
-transações financeiras de um usuário.
+## Sobre o Projeto
+
+Este é um projeto feito com a biblioteca Next.js, cujo objetivo é representar as transações financeiras de um usuário.
+
+## Pré-requisitos
+
+Antes de começar, certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
+
+- **Node.js** (versão 16 ou superior)
+- **NPM** (versão 8 ou superior) ou **Yarn**
+- Um navegador moderno (como Google Chrome ou Firefox)
+
+Para verificar as versões instaladas, use os comandos:
+
+```bash
+      node -v
+      npm -v
+```
 
 ## Passo importante
 
-Execute o comando abaixo para instalar os pacotes necessários do projeto
+Execute o comando abaixo para instalar os pacotes necessários do projeto (usando o NPM):
 
 ```bash
-        npm install
+      npm install
 ```
 
 ## Inicialização do projeto
@@ -31,21 +52,7 @@ Segundo, abrir [http://localhost:3000](http://localhost:3000) em seu navegador p
 - **json-server**: Cria uma API REST fake rapidamente com base em um arquivo JSON.
 - **next**: Framework React para renderização do lado do servidor e geração de
 
-### Dependências de desenvolvimento (`devDependencies`):
+## Links Úteis
 
-- **@chromatic-com/storybook**: Integração do Storybook com Chromatic para testes visuais.
-- **@eslint/eslintrc**: Configuração do ESLint.
-- **@storybook/addon-essentials**: Conjunto essencial de addons para o Storybook.
-- **@storybook/addon-onboarding**: Addon para onboarding no Storybook.
-- **@storybook/blocks**: Componentes React para criar histórias no Storybook.
-- **@storybook/experimental-addon-test**: Addon experimental para testes no Storybook.
-- **@storybook/experimental-next**:
-- **@storybook/experimental-nextjs-vite**: Suporte experimental para Next.js com Vite no Storybook.
-- **@storybook/react**: Suporte para React no Storybook.
-- **@storybook/test**: Ferramentas de teste para o Storybook.
-- **@tailwindcss/postcss**: Integração do Tailwind CSS com PostCSS.
-- **@types/axios**: Tipos TypeScript para Axios.
-- **@types/node**: Tipos TypeScript para Node.js.
-- **@types/react**: Tipos TypeScript para React.
-- **commitizen**: Ferramenta para padronizar mensagens de commit.
-- **eslint**: Ferramenta para análise de código JavaS
+- [Documentação do Next.js](https://nextjs.org/docs)
+- [Storybook](https://storybook.js.org/)

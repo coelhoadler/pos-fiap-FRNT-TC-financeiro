@@ -1,20 +1,23 @@
 import React from 'react';
 
 interface ButtonProps {
+    primary?: boolean;
     label: string;
     onClick?: () => void;
-    disabled?: boolean;
-    className?: string;
     type?: 'button' | 'submit' | 'reset';
 }
 
-const Button: React.FC<ButtonProps> = ({ label, onClick, disabled = false, className = '', type = 'button' }) => {
+const Button: React.FC<ButtonProps> = ({
+    label,
+    onClick,
+    primary = false,
+    type = 'button', ...props }) => {
     return (
         <button
             type={type}
-            className="w-[250px] h-[48px] bg-primary cursor-pointer text-white py-2 px-4 rounded-[8px] transition font-medium mt-6"
+            className={['min-w-[250px]', 'h-[48px]', `${primary ? 'hover:bg-primary' : 'hover:bg-secondary'}`, 'bg-inactive', 'cursor-pointer', 'text-primary', 'hover:text-white', 'py-2 px-4', 'rounded-[8px]', 'transition', 'font-medium'].join(' ')}
             onClick={onClick}
-            disabled={disabled}
+            {...props}
         >
             {label}
         </button>
