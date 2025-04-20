@@ -3,10 +3,11 @@
 import { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Image from "next/image";
-import { IInputs } from "@/app/interfaces/Form";
-import { ITransaction, ITypeTransaction } from "@/app/interfaces/TransactionModels";
+import { IInputs } from "@/app/interfaces/form";
+import { ITransaction, ITypeTransaction } from "@/app/interfaces/transactionModels";
 import { typeTransactionService } from "@/app/api/typeTransactionService/typeTransactionServices";
 import { transactionServices } from "@/app/api/transactionServices/transactionServices";
+import Button from "@/app/components/button/button";
 
 const FormTransaction = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm<IInputs>()
@@ -87,7 +88,7 @@ const FormTransaction = () => {
         }
       </div>
 
-      <div className="flex flex-col">
+      <div className="flex flex-col mb-6">
         <label
           htmlFor="value"
           className="block text-md font-bold mb-3"
@@ -105,12 +106,7 @@ const FormTransaction = () => {
         )}
       </div>
 
-      <button
-        type="submit"
-        className="w-[250px] h-[48px] bg-primary cursor-pointer text-white py-2 px-4 rounded-[8px] transition font-medium mt-6"
-      >
-        Concluir transação
-      </button>
+      <Button primary type="submit" label="Concluir transação" />
 
       <Image
         width={283}

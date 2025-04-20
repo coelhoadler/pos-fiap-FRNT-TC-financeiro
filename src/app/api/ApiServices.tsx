@@ -1,4 +1,4 @@
-import { IApiServices } from "../interfaces/ApiServices"
+import { IApiServices } from "../interfaces/apiServices"
 import axiosClient from "./AxiosClient"
 
 

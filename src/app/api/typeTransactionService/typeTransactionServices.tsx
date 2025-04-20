@@ -1,6 +1,6 @@
 'use client'
 
-import { ITypeTransaction } from '@/app/interfaces/TransactionModels';
+import { ITypeTransaction } from '@/app/interfaces/transactionModels';
 
 import { ApiServices } from '../ApiServices';
 
