@@ -8,6 +8,7 @@ import { ITransaction, ITypeTransaction } from "@/app/interfaces/transactionMode
 import { typeTransactionService } from "@/app/api/typeTransactionService/typeTransactionServices";
 import { transactionServices } from "@/app/api/transactionServices/transactionServices";
 import Button from "@/app/components/button/button";
+import Title from "../title/title";
 
 const FormTransaction = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm<IInputs>()
@@ -55,13 +56,9 @@ const FormTransaction = () => {
         className="absolute top-0 right-0 max-h-[144px] max-w-[146px] z-[-1]"
       />
 
-      <div className="flex flex-col">
-        <label
-          htmlFor="type-transaction-option"
-          className="block text-xl font-bold mb-5"
-        >
-          Nova transação
-        </label>
+      <fieldset className="flex flex-col">
+        <Title text="Nova transação" titleForID="type-transaction-option" size="xlarge" otherClasses={['mb-5']} />
+
         <select
           id="type-transaction-option"
           className="w-[355px] h-[48px] border-solid border-1 border-primary rounded p-16 bg-white text-black px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none mb-3"
@@ -83,18 +80,14 @@ const FormTransaction = () => {
 
         {
           errors.typeTransaction && (
-            <span className="text-sm text-red-600 mb-3">Campo obrigatório</span>
+            <Title text="* Campo obrigatório" titleForID="type-transaction-option" size="small" otherClasses={['mb-3', 'text-red-600', 'font-medium']} />
           )
         }
-      </div>
+      </fieldset>
 
-      <div className="flex flex-col mb-6">
-        <label
-          htmlFor="value"
-          className="block text-md font-bold mb-3"
-        >
-          Valor
-        </label>
+      <fieldset className="flex flex-col mb-6">
+        <Title text="Valor" titleForID="value" size="medium" otherClasses={['mb-3']} />
+
         <input
           type="number"
           id="value"
@@ -102,9 +95,9 @@ const FormTransaction = () => {
           {...register('value', { required: true })}
         />
         {errors.value && (
-          <span className="text-sm text-red-600 mb-3">Campo obrigatório</span>
+          <Title text="* Campo obrigatório" titleForID="value" size="small" otherClasses={['mb-3', 'text-red-600', 'font-medium']} />
         )}
-      </div>
+      </fieldset>
 
       <Button primary type="submit" label="Concluir transação" />
 
