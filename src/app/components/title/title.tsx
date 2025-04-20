@@ -1,7 +1,6 @@
 import React from 'react';
 
 interface TitleProps {
-    primary?: boolean;
     text: string;
     size?: 'small' | 'medium' | 'large' | 'xlarge';
     titleForID?: string;
@@ -17,7 +16,6 @@ const TitleSizes = {
 
 const Title: React.FC<TitleProps> = ({
     text,
-    primary = false,
     size = 'medium', 
     titleForID = 'unknown',
     otherClasses = [],
