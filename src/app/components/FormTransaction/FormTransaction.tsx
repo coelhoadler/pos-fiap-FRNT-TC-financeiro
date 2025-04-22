@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Image from "next/image";
+import CurrencyInput, { formatValue } from 'react-currency-input-field';
 import { IInputs } from "@/app/interfaces/form";
 import { ITransaction, ITypeTransaction } from "@/app/interfaces/transactionModels";
 import { typeTransactionService } from "@/app/api/typeTransactionService/typeTransactionServices";
@@ -25,21 +26,24 @@ const FormTransaction = () => {
   }, []);
 
   const onSubmit: SubmitHandler<IInputs> = async () => {
-    
-    const optionId = watch('typeTransaction')
-    
+    const optionId = watch('typeTransaction');
     const typeDescription = typeTransactionOptions.find((option) => option.id === optionId)?.description || ''
-    
+
+    const formattedCurrency = formatValue({
+      value: watch('value').toString().replaceAll(/[^0-9]/g, ''),
+      intlConfig: { locale: 'pt-BR', currency: 'BRL' },
+      prefix: ''
+
+    });
+
     const form: ITransaction = {
       typeTrasaction: { id: optionId, description: typeDescription },
-      amount: watch('value'),
+      amount: formattedCurrency,
       date: new Date(),
-      accountNumber: '123456789',
-    }
+      accountNumber: '123456789'
+    };
 
     await transactionServices.create(form)
-
-
     return alert("Transação realizada com sucesso!");
   }
 
@@ -61,7 +65,7 @@ const FormTransaction = () => {
 
         <select
           id="type-transaction-option"
-          className="w-[355px] h-[48px] border-solid border-1 border-primary rounded p-16 bg-white text-black px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none mb-3"
+          className="w-full md:w-[355px] h-[48px] border-solid border-1 border-primary rounded p-16 bg-white text-black px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none mb-3"
           {...register('typeTransaction', { required: true })}
         >
           <option value="">Selecione uma opção</option>
@@ -88,12 +92,12 @@ const FormTransaction = () => {
       <fieldset className="flex flex-col mb-6">
         <Title text="Valor" titleForID="value" size="medium" otherClasses={['mb-3']} />
 
-        <input
-          type="number"
-          id="value"
-          className="w-[250px] h-[48px] border-solid border-1 border-primary rounded p-16 bg-white text-black px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none mb-3"
+        <CurrencyInput 
+          className="w-full md:w-[250px] h-[48px] border-solid border-1 border-primary rounded p-16 bg-white text-black px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none mb-3"
+          defaultValue={0} prefix="R$ "
           {...register('value', { required: true })}
         />
+
         {errors.value && (
           <Title text="* Campo obrigatório" titleForID="value" size="small" otherClasses={['mb-3', 'text-red-600', 'font-medium']} />
         )}

@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import path from "path";
 
 const nextConfig: NextConfig = {
   async redirects() {
@@ -9,7 +10,7 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
     ]
-  },
+  }
 };
 
 export default nextConfig;

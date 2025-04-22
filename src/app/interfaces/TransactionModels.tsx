@@ -4,7 +4,7 @@ export interface ITypeTransaction{
 }
 export interface ITransaction{
   typeTrasaction: ITypeTransaction,
-  amount: number,
+  amount: string,
   date: Date,
   accountNumber: string
 }

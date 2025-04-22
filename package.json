@@ -23,6 +23,7 @@
     "next": "15.2.4",
     "postcss": "^8.5.3",
     "react": "^19.0.0",
+    "react-currency-input-field": "^3.10.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.55.0",
     "tailwindcss": "^4.1.2"
