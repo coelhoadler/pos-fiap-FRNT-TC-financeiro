@@ -60,6 +60,16 @@
       "amount": "900",
       "date": "2025-04-16T02:43:25.598Z",
       "accountNumber": "123456789"
+    },
+    {
+      "id": "bafa",
+      "typeTrasaction": {
+        "id": "3",
+        "description": "Empréstimo e Financiamento"
+      },
+      "amount": "R$ 333",
+      "date": "2025-04-23T03:30:33.215Z",
+      "accountNumber": "123456789"
     }
   ]
 }

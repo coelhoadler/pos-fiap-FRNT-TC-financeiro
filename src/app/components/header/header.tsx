@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { MobileMenu } from "../menu/menu";
+import { MobileMenu } from "../menu/Menu";
 
 export type THeader = {
   nameUser: string;
