@@ -4,12 +4,13 @@ import { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Image from "next/image";
 import CurrencyInput, { formatValue } from 'react-currency-input-field';
-import { IInputs } from "@/app/interfaces/form";
-import { ITransaction, ITypeTransaction } from "@/app/interfaces/transactionModels";
+
 import { typeTransactionService } from "@/app/api/typeTransactionService/typeTransactionServices";
 import { transactionServices } from "@/app/api/transactionServices/transactionServices";
 import Button from "@/app/components/button/button";
 import Title from "../title/title";
+import { IInputs } from "@/app/interfaces/Form";
+import { ITransaction, ITypeTransaction } from "@/app/interfaces/transactionModels";
 
 const FormTransaction = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm<IInputs>()
