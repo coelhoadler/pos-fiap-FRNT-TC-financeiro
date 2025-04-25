@@ -1,6 +1,5 @@
 import { IApiServices } from "../interfaces/apiServices"
-import axiosClient from "./AxiosClient"
-
+import axiosClient from "./axiosClient"
 
 export class ApiServices<T> implements IApiServices<T>{
     private baseUrl: string;
