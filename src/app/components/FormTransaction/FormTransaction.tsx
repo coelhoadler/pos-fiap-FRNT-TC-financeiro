@@ -51,7 +51,7 @@ const FormTransaction = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="relative bg-gray-300 min-h-[633px] md:min-h-[478px] w-full min-w-[320px] rounded-[10px] shadow-md p-6 text-tertiary z-2"
+      className="relative bg-gray-300 min-h-[633px] md:min-h-[478px] w-full min-w-[280px] rounded-[10px] shadow-md p-6 text-tertiary z-2"
     >
       <Image
         width={146}
