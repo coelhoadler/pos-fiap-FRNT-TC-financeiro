@@ -1,37 +1,5 @@
-
-const transactions = [
-  {
-    month: 'Novembro',
-    type: 'Depósito',
-    amount: 150,
-    date: '18/11/2022',
-  },
-  {
-    month: 'Novembro',
-    type: 'Depósito',
-    amount: 100,
-    date: '21/11/2022',
-  },
-  {
-    month: 'Novembro',
-    type: 'Depósito',
-    amount: 50,
-    date: '21/11/2022',
-  },
-  {
-    month: 'Novembro',
-    type: 'Transferência',
-    amount: -500,
-    date: '21/11/2022',
-  },
-];
-
-const formatCurrency = (value: number) => {
-  return value.toLocaleString('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-  });
-};
+import { formatCurrency, formatDate } from '@/app/shared/utils';
+import * as db from '../../database/db.json';
 
 export default function AccountStatement() {
   return (
@@ -39,43 +7,39 @@ export default function AccountStatement() {
 
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-[24px] font-bold">Extrato</h2>
-        <div className="flex gap-2">
-          <button className="bg-teal-900 text-white p-2 rounded-full">
-            EDITAR
-          </button>
-          <button className="bg-teal-900 text-white p-2 rounded-full">
-            LIXEIRA
-          </button>
-        </div>
       </div>
-
-
 
       <ul className="flex flex-col gap-5 text-left pt-5">
       {
-        transactions.length > 0 ? (
-      transactions.map((tx, index) => (
-        <div key={index} className="mb-4 pb-4 border-b border-link pb-2">
-          <p className="text-link font-semibold">{tx.month}</p>
+        db?.transactions?.length > 0 ? (
+          db.transactions.map((transaction, index) => (
+        <div key={index} className="mb-4 pb-4 border-b border-link">
+          <p className="text-link font-semibold">{formatDate(transaction.date)}</p>
           <div className="flex justify-between items-baseline">
             <div>
-              <p className="text-lg">{tx.type}</p>
-              <p className={`text-lg font-bold ${tx.amount < 0 ? 'text-red-600' : 'text-black'}`}>
-                {tx.amount < 0 ? '-' : ''}{formatCurrency(Math.abs(tx.amount))}
+              <p className="text-lg">{transaction.typeTrasaction.description}</p>
+              <p className={`text-lg font-bold ${parseFloat(transaction.amount) < 0 ? 'text-red-600' : 'text-black'}`}>
+                {parseFloat(transaction.amount) < 0 ? '-' : ''} {formatCurrency(Math.abs(parseFloat(transaction.amount)))}
               </p>
             </div>
-            <p className="text-sm text-gray-400">{tx.date}</p>
+            <p className="text-sm text-gray-400 flex flex-col">
+              <button className="bg-teal-900 text-white p-2 rounded-full mb-3">
+                EDITAR
+              </button>
+              <button className="bg-teal-900 text-white p-2 rounded-full">
+                LIXEIRA
+              </button>
+            </p>
           </div>
         </div>
       ))
     ) : (
       <span className="text-gray-500 text-center">
-        Nenhuma transação encontrada
+        Nenhuma transação encontrada.
       </span>
     )
       }
       </ul>
-
     </div>
   );
 }

@@ -1,8 +1,8 @@
-export interface ITypeTransaction{
+export interface ITypeTransaction {
   id: string,
   description: string
 }
-export interface ITransaction{
+export interface ITransaction {
   typeTrasaction: ITypeTransaction,
   amount: string,
   date: Date,
