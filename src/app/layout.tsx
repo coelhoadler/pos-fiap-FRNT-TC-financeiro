@@ -1,24 +1,23 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./styles/globals.css";
-import Header from "./components/header/header";
-import { DesktopMenu } from "./components/menu/menu";
-import AccountStatement from "./components/accountStatement/accountStatement";
-
+import type { Metadata } from 'next';
+import { Geist, Geist_Mono } from 'next/font/google';
+import './styles/globals.css';
+import Header from './components/header/header';
+import { DesktopMenu } from './components/menu/menu';
+import AccountStatement from './components/AccountStatement/AccountStatement';
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
-  title: "Pós Tech FIAP - Challenge 1",
-  description: "Tech Challenge 1 - FIAP",
+  title: 'Pós Tech FIAP - Challenge 1',
+  description: 'Tech Challenge 1 - FIAP',
 };
 
 export default function RootLayout({
@@ -33,7 +32,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden scroll-smooth`}
       >
-        <Header nameUser={"Joana da Silva Oliveira"} />
+        <Header nameUser={'Joana da Silva Oliveira'} />
         <main className="h-auto w-screen flex items-center justify-center min-w-[320px] pt-[150px] max-sm:pt-[116px]">
           <div className="lg:grid-cols-[250px_auto_350px] lg:grid-colums md:grid-cols-1 w-[95%] md:w-[80%] grid gap-3 grid-cols-1">
             <div className="lg:justify-center lg:items-start max-sm:hidden flex justify-center items-center box-content grow-1">

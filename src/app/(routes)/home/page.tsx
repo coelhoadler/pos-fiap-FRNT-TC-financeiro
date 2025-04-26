@@ -1,8 +1,7 @@
-import "@/app/styles/globals.css";
+import '@/app/styles/globals.css';
 
-
-import FormTransaction from "@/app/components/formTransaction/formTransaction";
-import CardBalance from "@/app/components/cardBalance/cardBalance";
+import FormTransaction from '@/app/components/FormTransaction/FormTransaction';
+import CardBalance from '@/app/components/CardBalance/CardBalance';
 
 export default function Home() {
   return (
