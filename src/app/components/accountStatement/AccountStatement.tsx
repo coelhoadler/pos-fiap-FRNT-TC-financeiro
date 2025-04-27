@@ -1,11 +1,9 @@
 'use client';
 
-import { formatCurrency, formatDate } from '@/app/shared/utils';
 import * as db from '../../database/db.json';
-import { LuPencil } from 'react-icons/lu';
-import { FaTrashAlt } from 'react-icons/fa';
 import { useState } from 'react';
-import { transactionServices } from '@/app/api/TransactionServices/transactionServices';
+import { transactionServices } from '@/app/api/transactionServices/transactionServices';
+import TransactionItem from '../transactionItem/transactionItem';
 
 export default function AccountStatement() {
   const [updatedTransactions, setUpdatedTransactions] = useState(
@@ -53,42 +51,8 @@ export default function AccountStatement() {
       <ul className="flex flex-col gap-5 text-left pt-5">
         {updatedTransactions.length > 0 ? (
           updatedTransactions.map((transaction, index) => (
-            <div key={index} className="mb-4 pb-4 border-b border-link">
-              <p className="text-link font-semibold">
-                {formatDate(transaction.date)}
-              </p>
-              <div className="flex justify-between items-baseline">
-                <div>
-                  <p className="text-lg">
-                    {transaction.typeTrasaction.description}
-                  </p>
-                  <p
-                    className={`text-lg font-bold ${
-                      parseFloat(transaction.amount) < 0
-                        ? 'text-red-600'
-                        : 'text-black'
-                    }`}
-                  >
-                    {parseFloat(transaction.amount) < 0 ? '-' : ''}{' '}
-                    {formatCurrency(Math.abs(parseFloat(transaction.amount)))}
-                  </p>
-                </div>
-                <p className="text-sm flex flex-col gap-3.5 text-white">
-                  <button title='Editar' className="bg-primary rounded-full h-[40px] w-[40px] flex items-center justify-center">
-                    <LuPencil size={18} className='cursor-pointer' />
-                  </button>
-                  <button
-                    title='Excluir'
-                    className="bg-primary rounded-full h-[40px] w-[40px] flex items-center justify-center"
-                    onClick={() =>
-                      handleTransactionDeleteConfirmation(transaction.id)
-                    }
-                  >
-                    <FaTrashAlt size={18} className='cursor-pointer' />
-                  </button>
-                </p>
-              </div>
-            </div>
+            console.log(transaction),
+            <TransactionItem item={transaction} key={index} onDelete={() => handleTransactionDeleteConfirmation(transaction.id)} />
           ))
         ) : (
           <span className="text-gray-500 text-center">

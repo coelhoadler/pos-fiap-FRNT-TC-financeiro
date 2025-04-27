@@ -43,7 +43,7 @@
   "transactions": [
     {
       "id": "c703",
-      "typeTrasaction": {
+      "typeTransaction": {
         "id": "2",
         "description": "DOC/TED"
       },
