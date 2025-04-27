@@ -34,7 +34,7 @@ export default function AccountStatement() {
   };
 
   const handleTransactionDeleteConfirmation = (transactionId: string) => {
-    //TODO: Implement the dialog confirmation for deletion
+    // TODO: Implement the dialog confirmation for deletion
     const confirmDelete = window.confirm(
       'Você tem certeza que deseja excluir esta transação?'
     );
@@ -73,17 +73,18 @@ export default function AccountStatement() {
                     {formatCurrency(Math.abs(parseFloat(transaction.amount)))}
                   </p>
                 </div>
-                <p className="text-sm text-gray-400 flex flex-col">
-                  <button className="bg-teal-900 text-white p-2 rounded-full mb-3">
-                    <LuPencil size={20} />
+                <p className="text-sm flex flex-col gap-3.5 text-white">
+                  <button title='Editar' className="bg-primary rounded-full h-[40px] w-[40px] flex items-center justify-center">
+                    <LuPencil size={18} className='cursor-pointer' />
                   </button>
                   <button
-                    className="bg-teal-900 text-white p-2 rounded-full"
+                    title='Excluir'
+                    className="bg-primary rounded-full h-[40px] w-[40px] flex items-center justify-center"
                     onClick={() =>
                       handleTransactionDeleteConfirmation(transaction.id)
                     }
                   >
-                    <FaTrashAlt size={20} />
+                    <FaTrashAlt size={18} className='cursor-pointer' />
                   </button>
                 </p>
               </div>

@@ -9,7 +9,7 @@ import { typeTransactionService } from '@/app/api/typeTransactionService/typeTra
 import { transactionServices } from '@/app/api/TransactionServices/transactionServices';
 import Button from '@/app/components/button/button';
 import Title from '../title/title';
-import { IInputs } from '@/app/interfaces/Form';
+import { IInputs } from '@/app/interfaces/form';
 import {
   ITransaction,
   ITypeTransaction,
