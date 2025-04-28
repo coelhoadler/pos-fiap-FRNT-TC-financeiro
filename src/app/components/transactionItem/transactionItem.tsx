@@ -14,7 +14,6 @@ const TransactionItem: React.FC<TransactionItemProps> = ({
     onDelete,
     ...props
 }) => {
-
     return (
         <div className="mb-4 pb-4 border-b border-link" {...props}>
             <p className="text-link font-semibold">

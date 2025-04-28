@@ -43,7 +43,7 @@ export default function AccountStatement() {
   };
 
   return (
-    <div className="bg-gray-100 p-8 rounded-xl w-full max-w-full shadow-md">
+    <div className="bg-gray-100 p-8 rounded-xl w-full max-w-full h-full shadow-md">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-[24px] font-bold">Extrato</h2>
       </div>
@@ -51,7 +51,6 @@ export default function AccountStatement() {
       <ul className="flex flex-col gap-5 text-left pt-5">
         {updatedTransactions.length > 0 ? (
           updatedTransactions.map((transaction, index) => (
-            console.log(transaction),
             <TransactionItem item={transaction} key={index} onDelete={() => handleTransactionDeleteConfirmation(transaction.id)} />
           ))
         ) : (

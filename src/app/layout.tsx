@@ -30,18 +30,18 @@ export default function RootLayout({
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden scroll-smooth`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased scroll-smooth`}
       >
         <Header nameUser={'Joana da Silva Oliveira'} />
-        <main className="h-auto w-screen flex items-center justify-center min-w-[320px] pt-[150px] max-sm:pt-[116px]">
+        <main className="w-screen flex justify-center min-w-[320px] pt-[150px] max-sm:pt-[116px] h-dvh pb-[1rem]">
           <div className="lg:grid-cols-[250px_auto_350px] lg:grid-colums md:grid-cols-1 w-[95%] md:w-[80%] grid gap-3 grid-cols-1">
             <div className="lg:justify-center lg:items-start max-sm:hidden flex justify-center items-center box-content grow-1">
               <DesktopMenu />
             </div>
-            <div className="lg:justify-center items-center flex grow-3 justify-center">
+            <div className="lg:justify-center items-center md:items-start flex grow-3 justify-center">
               {children}
             </div>
-            <div className="lg:justify-center lg:items-start md:items-end flex justify-center items-center grow-1">
+            <div className="lg:justify-center lg:items-start md:items-end flex justify-center items-center grow-1 h-full">
               <AccountStatement />
             </div>
           </div>

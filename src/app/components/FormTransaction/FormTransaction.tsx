@@ -3,10 +3,10 @@
 import { useEffect, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import Image from 'next/image';
-import CurrencyInput, { formatValue } from 'react-currency-input-field';
+import CurrencyInput from 'react-currency-input-field';
 
 import { typeTransactionService } from '@/app/api/typeTransactionService/typeTransactionServices';
-import { transactionServices } from '@/app/api/TransactionServices/transactionServices';
+import { transactionServices } from '@/app/api/transactionServices/transactionServices';
 import Button from '@/app/components/button/button';
 import Title from '../title/title';
 import { IInputs } from '@/app/interfaces/form';
@@ -41,18 +41,10 @@ const FormTransaction = () => {
       typeTransactionOptions.find((option) => option.id === optionId)
         ?.description || '';
 
-    const formattedCurrency = formatValue({
-      value: watch('value')
-        .toString()
-        .replaceAll(/[^0-9]/g, ''),
-      intlConfig: { locale: 'pt-BR', currency: 'BRL' },
-      prefix: '',
-    });
-
     const form: ITransaction = {
       typeTransaction: { id: optionId, description: typeDescription },
-      amount: formattedCurrency,
-      date: new Date(),
+      amount: watch('value').toString().substring(3),
+      date: new Date().toDateString(),
       accountNumber: '123456789',
     };
 
@@ -63,7 +55,7 @@ const FormTransaction = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="relative bg-gray-300 min-h-[633px] md:min-h-[478px] w-full min-w-[280px] rounded-[10px] shadow-md p-6 text-tertiary z-2"
+      className="relative bg-gray-300 min-h-[633px] w-full min-w-[280px] rounded-[10px] shadow-md p-6 text-tertiary z-2"
     >
       <Image
         width={146}
