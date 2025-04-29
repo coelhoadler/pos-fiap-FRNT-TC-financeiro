@@ -1,7 +1,7 @@
 import React from 'react';
 import { LuPencil } from 'react-icons/lu';
 import { FaTrashAlt } from 'react-icons/fa';
-import { ITransaction } from '@/app/interfaces/transactionModels';
+import { ITransaction, ITypeTransaction } from '@/app/interfaces/transactionModels';
 import { formatCurrency, formatDate } from '@/app/shared/utils';
 import { useTransaction } from '@/app/context/TransactionContext';
 
@@ -14,20 +14,14 @@ const TransactionItem: React.FC<TransactionItemProps> = ({
     onDelete,
     ...props
 }) => {
-    const { setId, setTypeTransaction, setValue } = useTransaction();
+    const { setId, setTypeTransactionEdit, setValueEdit } = useTransaction();
     
-    const handleEditTransaction = (id: string, transactionTypeID: string, value: string) => {
-        setId(id);
-        setTypeTransaction(transactionTypeID);
-        setValue(value);
+    const handleEditTransaction = ({ id, typeTransaction, amount }: ITransaction) => {
+        setId(id!)
+        setTypeTransactionEdit(typeTransaction)
+        setValueEdit(amount)
     };
-
-    // const handleEditTransaction = (id: string, transactionTypeID: string, value: string) => {
-    //     console.log('Edit Transaction:', id, transactionTypeID, value);
-    //     return (
-    //         <FormTransaction transactionId={id} transactionTypeID={transactionTypeID} initialValue={value} />
-    //     );
-    // };    
+;    
 
     return (
         <div className="mb-4 pb-4 border-b border-link" {...props}>
@@ -53,7 +47,7 @@ const TransactionItem: React.FC<TransactionItemProps> = ({
                         className="bg-primary rounded-full h-[40px] w-[40px] flex items-center justify-center"
                         onClick={(e) => {
                             e.stopPropagation();
-                            handleEditTransaction(item.id!, item.typeTransaction?.id!, item.amount!);
+                            handleEditTransaction(item as ITransaction)
                         }}>
                         <LuPencil size={18} className='cursor-pointer' />
                     </button>

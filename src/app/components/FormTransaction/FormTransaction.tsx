@@ -5,20 +5,21 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import Image from 'next/image';
 import CurrencyInput from 'react-currency-input-field';
 
-import { typeTransactionService } from '@/app/api/typeTransactionService/typeTransactionServices';
 import { transactionServices } from '@/app/api/transactionServices/transactionServices';
 import Button from '@/app/components/button/button';
 import Title from '../title/title';
-import { IInputs } from '@/app/interfaces/form';
+
 import {
   ITransaction,
   ITypeTransaction,
 } from '@/app/interfaces/transactionModels';
 import { useTransaction } from '@/app/context/TransactionContext';
+import { IInputs } from '@/app/interfaces/Form';
+import { toast } from "react-toastify";
 
 const FormTransaction = ({ transactionId, transactionTypeID, initialValue }: { transactionId?: string, transactionTypeID?: string, initialValue?: string }) => {
 
-  const { id, typeTransaction, value } = useTransaction();
+  const { id, typeTransactionEdit, valueEdit, setExtract , typeTransaction } = useTransaction();
 
   const {
     register,
@@ -29,46 +30,44 @@ const FormTransaction = ({ transactionId, transactionTypeID, initialValue }: { t
   } = useForm<IInputs>();
   const [typeTransactionOptions, setTypeTransactionOptions] = useState<
     ITypeTransaction[]
-  >([]);
+  >([])
+
+  const valueWatched = watch('value')
 
   useEffect(() => {
-    const fetchTypeTransaction = async () => {
-      const responseData = await typeTransactionService.getAll();
-      setTypeTransactionOptions(responseData || []);
-    };
-
-    fetchTypeTransaction();
-  }, []);
+    setTypeTransactionOptions(typeTransaction || [])
+  },[typeTransaction])
+  
 
   useEffect(() => {
-    // console.log('ID:', id);
-    // console.log('Tipo de Transação:', typeTransaction);
-    // console.log('Valor:', value);
 
-    setValue('typeTransaction', typeTransaction);
-    setValue('value', parseFloat(value));
-  }, [id, typeTransaction, value]);  
+    setValue('typeTransaction', typeTransactionEdit.id)
+    setValue('value', String(valueEdit))
+    console.log('valueWatched', valueWatched)
+
+  }, [id, typeTransaction, valueEdit]);  
 
   const onSubmit: SubmitHandler<IInputs> = async () => {
-    const optionId = watch('typeTransaction');
-    const typeDescription =
-      typeTransactionOptions.find((option) => option.id === optionId)
-        ?.description || '';
+    const optionId = watch('typeTransaction')
+    const typeDescription = typeTransactionOptions.find((option) => option.id === optionId)?.description || ''
 
     const form: ITransaction = {
       typeTransaction: { id: optionId, description: typeDescription },
       amount: watch('value').toString().substring(3),
       date: new Date().toDateString(),
       accountNumber: '123456789',
-    };
+    }
 
     if (id) {
-      await transactionServices.update(id, form);
-      alert('Transação alterada com sucesso!');
+      await transactionServices.update(id, form)
+      toast.success('Transação alterada com sucesso!')
     } else {
-      await transactionServices.create(form);
-      alert('Transação realizada com sucesso!');
+      await transactionServices.create(form)
+      toast.success('Transação realizada com sucesso!')
     }
+
+    const response = await transactionServices.getAll()
+    setExtract(response || [])
   };
 
   return (
@@ -126,13 +125,30 @@ const FormTransaction = ({ transactionId, transactionTypeID, initialValue }: { t
           size="medium"
           otherClasses={['mb-3']}
         />
-
-        <CurrencyInput
-          className="w-full md:w-[250px] h-[48px] border-solid border-1 border-primary rounded p-16 bg-white text-black px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none mb-3"
-          defaultValue={0}
-          prefix="R$ "
-          {...register('value', { required: true })}
-        />
+        {id? 
+          <>      
+            <CurrencyInput
+              className="w-full md:w-[250px] h-[48px] border-solid border-1 border-primary rounded p-16 bg-white text-black px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none mb-3"
+              prefix="R$ "
+              value={valueWatched}
+              onValueChange={(value) => { 
+      
+                console.log('value----', value)
+                setValue('value', value ?? '0') }
+              }        
+            />  
+          </> : <>
+            <CurrencyInput
+              className="w-full md:w-[250px] h-[48px] border-solid border-1 border-primary rounded p-16 bg-white text-black px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none mb-3"
+              defaultValue={0}
+              prefix="R$ " 
+              {...register('value', { required: true })}
+            />
+          </>
+        }
+        
+       
+   
 
         {errors.value && (
           <Title

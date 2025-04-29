@@ -1,46 +1,47 @@
 'use client';
 
-import * as db from '../../database/db.json';
-import { useState } from 'react';
-import { transactionServices } from '@/app/api/transactionServices/transactionServices';
+import { useEffect, useState } from 'react';
 import TransactionItem from '../transactionItem/transactionItem';
+import { useTransaction } from '@/app/context/TransactionContext';
+import { ITransaction } from '@/app/interfaces/transactionModels';
+import { toast } from 'react-toastify';
 
 export default function AccountStatement() {
-  const [updatedTransactions, setUpdatedTransactions] = useState(
-    db.transactions || []
-  );
+  const [updatedTransactions, setUpdatedTransactions] = useState<ITransaction[]>([]);
+
+  const { extract, transactionServices } = useTransaction()
+
+  useEffect(()=> {
+    setUpdatedTransactions(extract || [])
+  },[extract])
 
   const handleTransactionDelete = async (transactionId: string) => {
     try {
-      await transactionServices.delete(transactionId);
+      await transactionServices.delete(transactionId)
 
       if (updatedTransactions) {
         const remainingTransactions = updatedTransactions.filter(
           (transaction) => transaction.id !== transactionId
-        );
+        )
 
-        // Update the state or database with the new transactions list
-        setUpdatedTransactions(remainingTransactions);
+        setUpdatedTransactions(remainingTransactions)
 
-        //TODO: Implement a success dialog
-        alert('Transação excluída com sucesso!');
+        toast.success('Transação excluída com sucesso!')
       }
     } catch (error) {
-      //TODO: Implement a error dialog
-      console.error('Error deleting transaction:', error);
+      console.error('Error deleting transaction:', error)
     }
   };
 
   const handleTransactionDeleteConfirmation = (transactionId: string) => {
-    // TODO: Implement the dialog confirmation for deletion
     const confirmDelete = window.confirm(
       'Você tem certeza que deseja excluir esta transação?'
-    );
+    )
 
     if (confirmDelete) {
-      handleTransactionDelete(transactionId);
+      handleTransactionDelete(transactionId)
     }
-  };
+  }
 
   return (
     <div className="bg-gray-100 p-8 rounded-xl w-full max-w-full h-full shadow-md">
@@ -51,7 +52,7 @@ export default function AccountStatement() {
       <ul className="flex flex-col gap-5 text-left pt-5">
         {updatedTransactions.length > 0 ? (
           updatedTransactions.map((transaction, index) => (
-            <TransactionItem item={transaction} key={index} onDelete={() => handleTransactionDeleteConfirmation(transaction.id)} />
+            <TransactionItem item={transaction} key={index} onDelete={() => handleTransactionDeleteConfirmation(transaction.id!)} />
           ))
         ) : (
           <span className="text-gray-500 text-center">
@@ -60,5 +61,5 @@ export default function AccountStatement() {
         )}
       </ul>
     </div>
-  );
+  )
 }
