@@ -42,14 +42,14 @@
   ],
   "transactions": [
     {
-      "id": "c703",
       "typeTransaction": {
         "id": "2",
         "description": "DOC/TED"
       },
-      "amount": "900",
-      "date": "2025-04-16T02:43:25.598Z",
-      "accountNumber": "123456789"
+      "amount": "",
+      "date": "Mon Apr 28 2025",
+      "accountNumber": "123456789",
+      "id": "c703"
     },
     {
       "id": "68c7",
@@ -62,24 +62,44 @@
       "accountNumber": "123456789"
     },
     {
-      "id": "c8d3",
       "typeTransaction": {
         "id": "1",
         "description": "Câmbio e Moedas"
       },
-      "amount": "88",
+      "amount": "9",
       "date": "Mon Apr 28 2025",
-      "accountNumber": "123456789"
+      "accountNumber": "123456789",
+      "id": "c8d3"
     },
     {
-      "id": "1803",
       "typeTransaction": {
         "id": "2",
         "description": "DOC/TED"
       },
-      "amount": "77.754",
+      "amount": "99.999",
+      "date": "Mon Apr 28 2025",
+      "accountNumber": "123456789",
+      "id": "1803"
+    },
+    {
+      "id": "dc68",
+      "typeTransaction": {
+        "id": "1",
+        "description": "Câmbio e Moedas"
+      },
+      "amount": "33.551",
       "date": "Mon Apr 28 2025",
       "accountNumber": "123456789"
+    },
+    {
+      "typeTransaction": {
+        "id": "2",
+        "description": "DOC/TED"
+      },
+      "amount": "10",
+      "date": "Mon Apr 28 2025",
+      "accountNumber": "123456789",
+      "id": "1d59"
     }
   ]
 }

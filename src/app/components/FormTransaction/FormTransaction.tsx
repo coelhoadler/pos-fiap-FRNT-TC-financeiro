@@ -14,13 +14,18 @@ import {
   ITransaction,
   ITypeTransaction,
 } from '@/app/interfaces/transactionModels';
+import { useTransaction } from '@/app/context/TransactionContext';
 
-const FormTransaction = () => {
+const FormTransaction = ({ transactionId, transactionTypeID, initialValue }: { transactionId?: string, transactionTypeID?: string, initialValue?: string }) => {
+
+  const { id, typeTransaction, value } = useTransaction();
+
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
+    setValue
   } = useForm<IInputs>();
   const [typeTransactionOptions, setTypeTransactionOptions] = useState<
     ITypeTransaction[]
@@ -35,6 +40,15 @@ const FormTransaction = () => {
     fetchTypeTransaction();
   }, []);
 
+  useEffect(() => {
+    // console.log('ID:', id);
+    // console.log('Tipo de Transação:', typeTransaction);
+    // console.log('Valor:', value);
+
+    setValue('typeTransaction', typeTransaction);
+    setValue('value', parseFloat(value));
+  }, [id, typeTransaction, value]);  
+
   const onSubmit: SubmitHandler<IInputs> = async () => {
     const optionId = watch('typeTransaction');
     const typeDescription =
@@ -48,8 +62,13 @@ const FormTransaction = () => {
       accountNumber: '123456789',
     };
 
-    await transactionServices.create(form);
-    return alert('Transação realizada com sucesso!');
+    if (id) {
+      await transactionServices.update(id, form);
+      alert('Transação alterada com sucesso!');
+    } else {
+      await transactionServices.create(form);
+      alert('Transação realizada com sucesso!');
+    }
   };
 
   return (
@@ -67,7 +86,7 @@ const FormTransaction = () => {
 
       <fieldset className="flex flex-col">
         <Title
-          text="Nova transação"
+          text={id ? "Editar transação" : "Nova transação"}
           titleForID="type-transaction-option"
           size="xlarge"
           otherClasses={['mb-5']}
@@ -125,7 +144,7 @@ const FormTransaction = () => {
         )}
       </fieldset>
 
-      <Button primary type="submit" label="Concluir transação" />
+      <Button primary type="submit" label={id ? "Atualizar transação" : "Concluir transação"} />
 
       <Image
         width={283}
