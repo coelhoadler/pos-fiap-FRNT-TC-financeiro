@@ -4,7 +4,7 @@ import './styles/globals.css';
 import Header from './components/header/header';
 
 import { TransactionProvider } from './context/TransactionContext';
-import { DesktopMenu } from './components/menu/Menu';
+import { DesktopMenu } from './components/menu/menu';
 import AccountStatement from './components/accountStatement/AccountStatement';
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -50,7 +50,7 @@ export default function RootLayout({
             pauseOnHover
             theme="light" 
             />
-          <main className="w-screen flex justify-center min-w-[320px] pt-[150px] max-sm:pt-[116px] h-dvh pb-[1rem]">
+          <main className="w-screen flex justify-center min-w-[320px] pt-[130px] max-sm:pt-[116px] h-[99dvh] pb-[1rem]">
             <div className="lg:grid-cols-[250px_auto_350px] lg:grid-colums md:grid-cols-1 w-[95%] md:w-[80%] grid gap-3 grid-cols-1">
               <div className="lg:justify-center lg:items-start max-sm:hidden flex justify-center items-center box-content grow-1">
                 <DesktopMenu />

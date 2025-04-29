@@ -35,7 +35,6 @@ export const TransactionProvider = ({ children }: TransactionProviderProps) => {
   const [typeTransaction, setTypeTransaction] = useState<ITypeTransaction[]>([])
   const [typeTransactionEdit, setTypeTransactionEdit] = useState<ITypeTransaction>({} as ITypeTransaction)
 
-
   useEffect(() => {
     const fetchTransaction = async () => { 
       const responseData = await transactionServices.getAll();
@@ -49,7 +48,6 @@ export const TransactionProvider = ({ children }: TransactionProviderProps) => {
     }
 
     fetchTypeTransaction()
-
   },[])
 
   return (

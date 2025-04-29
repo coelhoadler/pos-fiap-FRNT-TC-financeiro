@@ -19,14 +19,15 @@ import { toast } from "react-toastify";
 
 const FormTransaction = ({ transactionId, transactionTypeID, initialValue }: { transactionId?: string, transactionTypeID?: string, initialValue?: string }) => {
 
-  const { id, typeTransactionEdit, valueEdit, setExtract , typeTransaction } = useTransaction();
+  const { id, setId, typeTransactionEdit, valueEdit, setExtract, typeTransaction, setTypeTransactionEdit } = useTransaction();
 
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
-    setValue
+    setValue,
+    reset,
   } = useForm<IInputs>();
   const [typeTransactionOptions, setTypeTransactionOptions] = useState<
     ITypeTransaction[]
@@ -36,16 +37,13 @@ const FormTransaction = ({ transactionId, transactionTypeID, initialValue }: { t
 
   useEffect(() => {
     setTypeTransactionOptions(typeTransaction || [])
-  },[typeTransaction])
-  
+  }, [typeTransaction])
 
   useEffect(() => {
-
     setValue('typeTransaction', typeTransactionEdit.id)
     setValue('value', String(valueEdit))
     console.log('valueWatched', valueWatched)
-
-  }, [id, typeTransaction, valueEdit]);  
+  }, [id, typeTransaction, valueEdit]);
 
   const onSubmit: SubmitHandler<IInputs> = async () => {
     const optionId = watch('typeTransaction')
@@ -54,13 +52,14 @@ const FormTransaction = ({ transactionId, transactionTypeID, initialValue }: { t
     const form: ITransaction = {
       typeTransaction: { id: optionId, description: typeDescription },
       amount: watch('value').toString().substring(3),
-      date: new Date().toDateString(),
+      date: new Date().toISOString(),
       accountNumber: '123456789',
     }
 
     if (id) {
       await transactionServices.update(id, form)
       toast.success('Transação alterada com sucesso!')
+      setId('')
     } else {
       await transactionServices.create(form)
       toast.success('Transação realizada com sucesso!')
@@ -68,7 +67,14 @@ const FormTransaction = ({ transactionId, transactionTypeID, initialValue }: { t
 
     const response = await transactionServices.getAll()
     setExtract(response || [])
+    reset()
   };
+
+  const handleCancelTransaction = () => {
+    console.log('handleCancelTransaction')
+    reset();
+    setId('');
+  }  
 
   return (
     <form
@@ -125,30 +131,26 @@ const FormTransaction = ({ transactionId, transactionTypeID, initialValue }: { t
           size="medium"
           otherClasses={['mb-3']}
         />
-        {id? 
-          <>      
+        {id ?
+          <>
             <CurrencyInput
               className="w-full md:w-[250px] h-[48px] border-solid border-1 border-primary rounded p-16 bg-white text-black px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none mb-3"
               prefix="R$ "
               value={valueWatched}
-              onValueChange={(value) => { 
-      
-                console.log('value----', value)
-                setValue('value', value ?? '0') }
-              }        
-            />  
+              onValueChange={(value) => {
+                console.log('value---->', value)
+                setValue('value', value ?? '0')
+              }}
+            />
           </> : <>
             <CurrencyInput
               className="w-full md:w-[250px] h-[48px] border-solid border-1 border-primary rounded p-16 bg-white text-black px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none mb-3"
               defaultValue={0}
-              prefix="R$ " 
+              prefix="R$ "
               {...register('value', { required: true })}
             />
           </>
         }
-        
-       
-   
 
         {errors.value && (
           <Title
@@ -160,7 +162,12 @@ const FormTransaction = ({ transactionId, transactionTypeID, initialValue }: { t
         )}
       </fieldset>
 
-      <Button primary type="submit" label={id ? "Atualizar transação" : "Concluir transação"} />
+      <section className='flex gap-2'>
+        <Button primary type="submit" label={id ? "Atualizar transação" : "Concluir transação"} />
+        {id &&
+          <Button type="button" label="Cancelar" onClick={() => handleCancelTransaction()} />
+        }
+      </section>
 
       <Image
         width={283}

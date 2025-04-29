@@ -1,5 +1,5 @@
-import CardBalance from '@/app/components/cardBalance/CardBalance';
-import FormTransaction from '@/app/components/FormTransaction/FormTransaction';
+import CardBalance from '@/app/components/cardBalance/cardBalance';
+import FormTransaction from '@/app/components/formTransaction/formTransaction';
 import '@/app/styles/globals.css';
 
 
