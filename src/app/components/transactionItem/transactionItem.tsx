@@ -39,7 +39,7 @@ const TransactionItem: React.FC<TransactionItemProps> = ({
                             }`}
                     >
                         {parseFloat(item.amount || '0') < 0 ? '-' : ''} {' '}
-                        {formatCurrency(Math.abs(parseFloat(item.amount || '0')))}
+                        {(item.amount || '0')}
                     </p>
                 </div>
                 <p className="text-sm flex flex-col gap-3.5 text-white">

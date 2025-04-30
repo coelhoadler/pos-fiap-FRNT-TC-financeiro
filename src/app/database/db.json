@@ -46,30 +46,40 @@
         "id": "1",
         "description": "Câmbio e Moedas"
       },
-      "amount": "11",
-      "date": "2025-04-30T02:09:15.029Z",
+      "amount": "R$ 8,50",
+      "date": "2025-04-30T22:41:39.091Z",
       "accountNumber": "123456789",
-      "id": "c3a8"
+      "id": "3844"
     },
     {
       "typeTransaction": {
         "id": "2",
         "description": "DOC/TED"
       },
-      "amount": "22",
-      "date": "2025-04-30T02:09:21.547Z",
+      "amount": "R$ 9,99",
+      "date": "2025-04-30T22:41:28.047Z",
       "accountNumber": "123456789",
-      "id": "ae33"
+      "id": "6825"
     },
     {
       "typeTransaction": {
         "id": "3",
         "description": "Empréstimo e Financiamento"
       },
-      "amount": "33",
-      "date": "2025-04-30T02:09:26.678Z",
+      "amount": "R$ 1,00",
+      "date": "2025-04-30T22:23:20.485Z",
       "accountNumber": "123456789",
-      "id": "9fc5"
+      "id": "bfa0"
+    },
+    {
+      "typeTransaction": {
+        "id": "1",
+        "description": "Câmbio e Moedas"
+      },
+      "amount": "R$ 12,060",
+      "date": "2025-04-30T22:31:20.813Z",
+      "accountNumber": "123456789",
+      "id": "a8d4"
     }
   ]
 }

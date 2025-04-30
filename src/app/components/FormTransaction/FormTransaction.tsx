@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import Image from 'next/image';
-import CurrencyInput from 'react-currency-input-field';
+import { CurrencyInput } from 'react-currency-mask';
 
 import { transactionServices } from '@/app/api/transactionServices/transactionServices';
 import Button from '@/app/components/button/button';
@@ -21,7 +21,7 @@ const FormTransaction = () => {
 
   const { id, setId, typeTransactionEdit, valueEdit, setExtract, typeTransaction, setTypeTransactionEdit, setValueEdit } = useTransaction()
   const [inputKey, setInputKey] = useState(0);
-  
+
   const handleNew = () => {
     reset({ value: '' })
     setInputKey(prev => prev + 1)
@@ -38,36 +38,35 @@ const FormTransaction = () => {
   const [typeTransactionOptions, setTypeTransactionOptions] = useState<
     ITypeTransaction[]
   >([])
-  
-  const [valueWatched, setValueWatched] = useState<string>('')
 
-  
+  const [valueWatched, setValueWatched] = useState<string>('')
 
   useEffect(() => {
     setTypeTransactionOptions(typeTransaction || [])
   }, [typeTransaction])
 
-  useEffect(()=> {
-
-    if(id){
+  useEffect(() => {
+    if (id) {
       setValueWatched(valueEdit)
       setValue('typeTransaction', typeTransactionEdit.id)
     }
-    if(!id){
+
+    if (!id) {
       setValueWatched('')
+      setValue('value', '')
       setValue('typeTransaction', '')
       setTypeTransactionEdit({ id: '', description: '' })
-    }    
-  },[id])
+    }
+  }, [id])
 
   const onSubmit: SubmitHandler<IInputs> = async () => {
     const optionId = watch('typeTransaction')
     const typeDescription = typeTransactionOptions.find((option) => option.id === optionId)?.description || ''
     const _valueNew = watch('value')
-    
+
     const form: ITransaction = {
       typeTransaction: { id: optionId, description: typeDescription },
-      amount: id? valueWatched : !id? _valueNew.split(' ')[1] : valueEdit,
+      amount: (id) ? valueWatched : _valueNew,
       date: new Date().toISOString(),
       accountNumber: '123456789',
     }
@@ -82,17 +81,14 @@ const FormTransaction = () => {
       toast.success('Transação realizada com sucesso!')
     }
 
-    
     const response = await transactionServices.getAll()
     setExtract(response || [])
-    
   }
 
   const handleCancelTransaction = () => {
-    console.log('handleCancelTransaction')
     reset();
     setId('');
-  }  
+  }
 
   return (
     <form
@@ -149,24 +145,17 @@ const FormTransaction = () => {
           size="medium"
           otherClasses={['mb-3']}
         />
-          <>
-            <CurrencyInput
-              key={id ? `edit-${id}` : `create-${inputKey}`}
-              className="w-full md:w-[250px] h-[48px] border-solid border-1 border-primary rounded p-16 bg-white text-black px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none mb-3"
-              prefix="R$ "
-              
-              {...(id? 
-                  {
-                    value: valueWatched,
-                    onValueChange: (val) => setValueWatched(val ?? '0')
-                  }
-                  : {
-                    defaultValue: 0,
-                    ...register('value', { required: true }),
-                    onValueChange: (val) => setValueWatched(val ?? '0')
-                  })}               
-            />
-          </>         
+
+        <CurrencyInput
+          key={id ? `edit-${id}` : `create-${inputKey}`}
+          className="w-full md:w-[250px] h-[48px] border-solid border-1 border-primary rounded p-16 bg-white text-black px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none mb-3"
+          placeholder="R$ 0,00"
+          defaultValue={id ? valueWatched : 0}
+          onChangeValue={(event, originalValue, maskedValue) => {
+            setValueWatched(maskedValue as string)
+          }}
+          {...register('value', { required: true })}
+        />
 
         {errors.value && (
           <Title
