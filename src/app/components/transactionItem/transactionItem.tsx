@@ -18,6 +18,7 @@ const TransactionItem: React.FC<TransactionItemProps> = ({
     const { setId, setTypeTransactionEdit, setValueEdit } = useTransaction();
     
     const handleEditTransaction = ({ id, typeTransaction, amount }: ITransaction) => {
+      
         setId(id!)
         setTypeTransactionEdit(typeTransaction)
         setValueEdit(amount)

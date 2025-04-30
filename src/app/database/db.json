@@ -42,14 +42,34 @@
   ],
   "transactions": [
     {
-      "id": "ccee",
       "typeTransaction": {
         "id": "1",
         "description": "Câmbio e Moedas"
       },
-      "amount": "7",
-      "date": "Tue Apr 29 2025",
-      "accountNumber": "123456789"
+      "amount": "11",
+      "date": "2025-04-30T02:09:15.029Z",
+      "accountNumber": "123456789",
+      "id": "c3a8"
+    },
+    {
+      "typeTransaction": {
+        "id": "2",
+        "description": "DOC/TED"
+      },
+      "amount": "22",
+      "date": "2025-04-30T02:09:21.547Z",
+      "accountNumber": "123456789",
+      "id": "ae33"
+    },
+    {
+      "typeTransaction": {
+        "id": "3",
+        "description": "Empréstimo e Financiamento"
+      },
+      "amount": "33",
+      "date": "2025-04-30T02:09:26.678Z",
+      "accountNumber": "123456789",
+      "id": "9fc5"
     }
   ]
 }

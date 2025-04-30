@@ -17,9 +17,15 @@ import { useTransaction } from '@/app/context/TransactionContext';
 import { IInputs } from '@/app/interfaces/Form';
 import { toast } from "react-toastify";
 
-const FormTransaction = ({ transactionId, transactionTypeID, initialValue }: { transactionId?: string, transactionTypeID?: string, initialValue?: string }) => {
+const FormTransaction = () => {
 
-  const { id, setId, typeTransactionEdit, valueEdit, setExtract, typeTransaction, setTypeTransactionEdit } = useTransaction();
+  const { id, setId, typeTransactionEdit, valueEdit, setExtract, typeTransaction, setTypeTransactionEdit, setValueEdit } = useTransaction()
+  const [inputKey, setInputKey] = useState(0);
+  
+  const handleNew = () => {
+    reset({ value: '' })
+    setInputKey(prev => prev + 1)
+  }
 
   const {
     register,
@@ -32,26 +38,36 @@ const FormTransaction = ({ transactionId, transactionTypeID, initialValue }: { t
   const [typeTransactionOptions, setTypeTransactionOptions] = useState<
     ITypeTransaction[]
   >([])
+  
+  const [valueWatched, setValueWatched] = useState<string>('')
 
-  const valueWatched = watch('value')
+  
 
   useEffect(() => {
     setTypeTransactionOptions(typeTransaction || [])
   }, [typeTransaction])
 
-  useEffect(() => {
-    setValue('typeTransaction', typeTransactionEdit.id)
-    setValue('value', String(valueEdit))
-    console.log('valueWatched', valueWatched)
-  }, [id, typeTransaction, valueEdit]);
+  useEffect(()=> {
+
+    if(id){
+      setValueWatched(valueEdit)
+      setValue('typeTransaction', typeTransactionEdit.id)
+    }
+    if(!id){
+      setValueWatched('')
+      setValue('typeTransaction', '')
+      setTypeTransactionEdit({ id: '', description: '' })
+    }    
+  },[id])
 
   const onSubmit: SubmitHandler<IInputs> = async () => {
     const optionId = watch('typeTransaction')
     const typeDescription = typeTransactionOptions.find((option) => option.id === optionId)?.description || ''
-
+    const _valueNew = watch('value')
+    
     const form: ITransaction = {
       typeTransaction: { id: optionId, description: typeDescription },
-      amount: watch('value').toString().substring(3),
+      amount: id? valueWatched : !id? _valueNew.split(' ')[1] : valueEdit,
       date: new Date().toISOString(),
       accountNumber: '123456789',
     }
@@ -62,13 +78,15 @@ const FormTransaction = ({ transactionId, transactionTypeID, initialValue }: { t
       setId('')
     } else {
       await transactionServices.create(form)
+      handleNew()
       toast.success('Transação realizada com sucesso!')
     }
 
+    
     const response = await transactionServices.getAll()
     setExtract(response || [])
-    reset()
-  };
+    
+  }
 
   const handleCancelTransaction = () => {
     console.log('handleCancelTransaction')
@@ -131,26 +149,24 @@ const FormTransaction = ({ transactionId, transactionTypeID, initialValue }: { t
           size="medium"
           otherClasses={['mb-3']}
         />
-        {id ?
           <>
             <CurrencyInput
+              key={id ? `edit-${id}` : `create-${inputKey}`}
               className="w-full md:w-[250px] h-[48px] border-solid border-1 border-primary rounded p-16 bg-white text-black px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none mb-3"
               prefix="R$ "
-              value={valueWatched}
-              onValueChange={(value) => {
-                console.log('value---->', value)
-                setValue('value', value ?? '0')
-              }}
+              
+              {...(id? 
+                  {
+                    value: valueWatched,
+                    onValueChange: (val) => setValueWatched(val ?? '0')
+                  }
+                  : {
+                    defaultValue: 0,
+                    ...register('value', { required: true }),
+                    onValueChange: (val) => setValueWatched(val ?? '0')
+                  })}               
             />
-          </> : <>
-            <CurrencyInput
-              className="w-full md:w-[250px] h-[48px] border-solid border-1 border-primary rounded p-16 bg-white text-black px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none mb-3"
-              defaultValue={0}
-              prefix="R$ "
-              {...register('value', { required: true })}
-            />
-          </>
-        }
+          </>         
 
         {errors.value && (
           <Title

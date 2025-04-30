@@ -4,7 +4,7 @@ import './styles/globals.css';
 import Header from './components/header/header';
 
 import { TransactionProvider } from './context/TransactionContext';
-import { DesktopMenu } from './components/menu/menu';
+import { DesktopMenu } from './components/menu/Menu';
 import AccountStatement from './components/accountStatement/AccountStatement';
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
