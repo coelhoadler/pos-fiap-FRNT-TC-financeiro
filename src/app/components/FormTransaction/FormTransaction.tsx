@@ -19,7 +19,7 @@ import { toast } from "react-toastify";
 
 const FormTransaction = () => {
 
-  const { id, setId, typeTransactionEdit, valueEdit, setExtract, typeTransaction, setTypeTransactionEdit, setValueEdit } = useTransaction()
+  const { id, setId, typeTransactionEdit, valueEdit, setExtract, typeTransaction, setTypeTransactionEdit } = useTransaction()
   const [inputKey, setInputKey] = useState(0);
 
   const handleNew = () => {

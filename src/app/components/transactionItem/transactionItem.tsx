@@ -2,7 +2,7 @@ import React from 'react';
 import { LuPencil } from 'react-icons/lu';
 import { FaTrashAlt } from 'react-icons/fa';
 import { ITransaction } from '@/app/interfaces/transactionModels';
-import { formatCurrency, formatDate } from '@/app/shared/utils';
+import { formatCurrency, formatDate, formatTime } from '@/app/shared/utils';
 import { useTransaction } from '@/app/context/TransactionContext';
 
 interface TransactionItemProps {
@@ -16,9 +16,8 @@ const TransactionItem: React.FC<TransactionItemProps> = ({
     ...props
 }) => {
     const { setId, setTypeTransactionEdit, setValueEdit } = useTransaction();
-    
+
     const handleEditTransaction = ({ id, typeTransaction, amount }: ITransaction) => {
-      
         setId(id!)
         setTypeTransactionEdit(typeTransaction)
         setValueEdit(amount)
@@ -26,16 +25,15 @@ const TransactionItem: React.FC<TransactionItemProps> = ({
 
     return (
         <div className="mb-4 pb-4 border-b border-link" {...props}>
-            <p className="text-link font-semibold">
-                {formatDate(item.date || '')}
-            </p>
+            <span className="text-link font-semibold">{formatDate(item.date || '')}</span>
+            <span className="ml-3 text-sm text-gray-500">{formatTime(item.date || '')}</span>
             <div className="flex justify-between items-center">
                 <div>
                     <p className="text-md">{item.typeTransaction?.description}</p>
                     <p
                         className={`text-md font-bold ${parseFloat(item.amount || '0') < 0
-                                ? 'text-red-600'
-                                : 'text-black'
+                            ? 'text-red-600'
+                            : 'text-black'
                             }`}
                     >
                         {parseFloat(item.amount || '0') < 0 ? '-' : ''} {' '}
@@ -43,8 +41,8 @@ const TransactionItem: React.FC<TransactionItemProps> = ({
                     </p>
                 </div>
                 <p className="text-sm flex flex-col gap-3.5 text-white">
-                    <button 
-                        title='Editar' 
+                    <button
+                        title='Editar'
                         className="bg-primary rounded-full h-[40px] w-[40px] flex items-center justify-center cursor-pointer"
                         onClick={(e) => {
                             e.stopPropagation();

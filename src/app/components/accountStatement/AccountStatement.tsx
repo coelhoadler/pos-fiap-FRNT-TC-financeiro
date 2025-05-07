@@ -5,6 +5,7 @@ import TransactionItem from '../transactionItem/transactionItem';
 import { useTransaction } from '@/app/context/TransactionContext';
 import { ITransaction } from '@/app/interfaces/transactionModels';
 import { toast } from 'react-toastify';
+import { sortExtractByAscDate } from '@/app/shared/utils';
 
 export default function AccountStatement() {
   const [updatedTransactions, setUpdatedTransactions] = useState<ITransaction[]>([]);
@@ -12,7 +13,8 @@ export default function AccountStatement() {
   const { extract, transactionServices } = useTransaction()
 
   useEffect(()=> {
-    setUpdatedTransactions(extract || [])
+    const extractOrdered = sortExtractByAscDate(extract || []);
+    setUpdatedTransactions(extractOrdered || []);
   },[extract])
 
   const handleTransactionDelete = async (transactionId: string) => {
