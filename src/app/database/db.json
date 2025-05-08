@@ -42,33 +42,63 @@
   ],
   "transactions": [
     {
-      "id": "9c59",
-      "typeTrasaction": {
+      "typeTransaction": {
         "id": "1",
         "description": "Câmbio e Moedas"
       },
-      "amount": "4",
-      "date": "2025-04-16T02:01:20.706Z",
-      "accountNumber": "123456789"
+      "amount": "R$ 8,90",
+      "date": "2025-05-07T10:31:27.540Z",
+      "accountNumber": "123456789",
+      "id": "3844"
     },
     {
-      "id": "c703",
-      "typeTrasaction": {
-        "id": "2",
-        "description": "DOC/TED"
-      },
-      "amount": "900",
-      "date": "2025-04-16T02:43:25.598Z",
-      "accountNumber": "123456789"
-    },
-    {
-      "id": "bafa",
-      "typeTrasaction": {
+      "typeTransaction": {
         "id": "3",
         "description": "Empréstimo e Financiamento"
       },
-      "amount": "R$ 333",
-      "date": "2025-04-23T03:30:33.215Z",
+      "amount": "R$ 1,00",
+      "date": "2025-04-30T22:23:20.485Z",
+      "accountNumber": "123456789",
+      "id": "bfa0"
+    },
+    {
+      "typeTransaction": {
+        "id": "1",
+        "description": "Câmbio e Moedas"
+      },
+      "amount": "R$ 120,66",
+      "date": "2025-05-07T10:31:14.823Z",
+      "accountNumber": "123456789",
+      "id": "a8d4"
+    },
+    {
+      "id": "87fd",
+      "typeTransaction": {
+        "id": "1",
+        "description": "Câmbio e Moedas"
+      },
+      "amount": "R$ 0,99",
+      "date": "2025-05-07T10:31:39.926Z",
+      "accountNumber": "123456789"
+    },
+    {
+      "id": "3d5c",
+      "typeTransaction": {
+        "id": "2",
+        "description": "DOC/TED"
+      },
+      "amount": "R$ 1,00",
+      "date": "2025-05-07T10:31:45.061Z",
+      "accountNumber": "123456789"
+    },
+    {
+      "id": "3c6c",
+      "typeTransaction": {
+        "id": "1",
+        "description": "Câmbio e Moedas"
+      },
+      "amount": "R$ 0,99",
+      "date": "2025-05-07T10:39:49.219Z",
       "accountNumber": "123456789"
     }
   ]

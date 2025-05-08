@@ -1,4 +1,4 @@
 export interface IInputs {
     typeTransaction: string,
-    value: number
+    value: string
 }

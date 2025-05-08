@@ -1,24 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { DesktopMenu } from './Menu'
+import { MenuItens } from './menu'
 
-const meta: Meta<typeof DesktopMenu> = {
-   title: 'Tech Challenge Components/DesktopMenu',    
-    component: DesktopMenu,
+const meta: Meta<typeof MenuItens> = {
+   title: 'Tech Challenge Components/MenuItens',    
+    component: MenuItens,
 }
 
 export default meta
 
-type Story = StoryObj<typeof DesktopMenu>
+type Story = StoryObj<typeof MenuItens>
 export const Default: Story = {
     args: {
-        menuItems: [
-            { title: 'Inicio', path: '/home' },
-            { title: 'Transferências', path: '/extract' },
-            { title: 'Investimentos', path: '#investimentos' },
-            { title: 'Outros serviços', path: '#outros-servicos' },
-        ],
+        onClickItem: () => {},
     },
-    render: (args: any) => <DesktopMenu {...args} />,
+    render: (args: any) => <MenuItens {...args} />,
     parameters: {
         layout: 'fullscreen',
         backgrounds: {
