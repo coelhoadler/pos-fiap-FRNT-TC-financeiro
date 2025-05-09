@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import AccountStatement from './accountStatement';
+import AccountStatement from './AccountStatement';
 
 const meta: Meta<typeof AccountStatement> = {
   title: 'Tech Challenge Components/AccountStatement',

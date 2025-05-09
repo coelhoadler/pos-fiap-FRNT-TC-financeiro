@@ -43,7 +43,7 @@ const FormTransaction = () => {
 
   useEffect(() => {
     setTypeTransactionOptions(typeTransaction || [])
-  }, [typeTransaction])
+  }, [typeTransaction, setTypeTransactionOptions])
 
   useEffect(() => {
     if (id) {
@@ -146,7 +146,7 @@ const FormTransaction = () => {
           otherClasses={['mb-3']}
         />
 
-        <CurrencyInput
+        {/* <CurrencyInput
           key={id ? `edit-${id}` : `create-${inputKey}`}
           className="w-full md:w-[250px] h-[48px] border-solid border-1 border-primary rounded p-16 bg-white text-black px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none mb-3"
           placeholder="R$ 0,00"
@@ -155,7 +155,7 @@ const FormTransaction = () => {
             setValueWatched(maskedValue as string)
           }}
           {...register('value', { required: true })}
-        />
+        /> */}
 
         {errors.value && (
           <Title

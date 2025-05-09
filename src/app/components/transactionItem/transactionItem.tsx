@@ -2,7 +2,7 @@ import React from 'react';
 import { LuPencil } from 'react-icons/lu';
 import { FaTrashAlt } from 'react-icons/fa';
 import { ITransaction } from '@/app/interfaces/transactionModels';
-import { formatCurrency, formatDate, formatTime } from '@/app/shared/utils';
+import { formatDate, formatTime } from '@/app/shared/utils';
 import { useTransaction } from '@/app/context/TransactionContext';
 
 interface TransactionItemProps {
