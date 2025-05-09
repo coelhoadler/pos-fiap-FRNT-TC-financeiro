@@ -16,6 +16,7 @@ import {
 import { useTransaction } from '@/app/context/TransactionContext';
 import { IInputs } from '@/app/interfaces/Form';
 import { toast } from "react-toastify";
+import { showConfirmToast, showSuccessToast } from '../showCustomToast/showCustomToast';
 
 const FormTransaction = () => {
 
@@ -59,31 +60,63 @@ const FormTransaction = () => {
     }
   }, [id])
 
-  const onSubmit: SubmitHandler<IInputs> = async () => {
-    const optionId = watch('typeTransaction')
-    const typeDescription = typeTransactionOptions.find((option) => option.id === optionId)?.description || ''
-    const _valueNew = watch('value')
+  const handleConfirmEdit = () => {
+    toast.dismiss();
+  
+    const submitUpdate = async () => {
+      const optionId = watch('typeTransaction');
+      const typeDescription = typeTransactionOptions.find((option) => option.id === optionId)?.description || '';
+      const _valueNew = watch('value');
+  
+      const form: ITransaction = {
+        typeTransaction: { id: optionId, description: typeDescription },
+        amount: valueWatched,
+        date: new Date().toISOString(),
+        accountNumber: '123456789',
+      };
+  
+      await transactionServices.update(id, form);
+      
+      showSuccessToast({ message: 'Transação alterada com sucesso!'})
+  
+      setId('');
+      const response = await transactionServices.getAll();
+      setExtract(response || []);
+    };
+  
+    submitUpdate();
+  };
+  
+  
 
+  
+
+  const onSubmit: SubmitHandler<IInputs> = async () => {
+    if (id) {
+      showConfirmToast({ onClick: handleConfirmEdit, type: "edit" });
+      return;
+    }
+  
+    const optionId = watch('typeTransaction');
+    const typeDescription = typeTransactionOptions.find((option) => option.id === optionId)?.description || '';
+    const _valueNew = watch('value');
+  
     const form: ITransaction = {
       typeTransaction: { id: optionId, description: typeDescription },
-      amount: (id) ? valueWatched : _valueNew,
+      amount: _valueNew,
       date: new Date().toISOString(),
       accountNumber: '123456789',
-    }
-
-    if (id) {
-      await transactionServices.update(id, form)
-      toast.success('Transação alterada com sucesso!')
-      setId('')
-    } else {
-      await transactionServices.create(form)
-      handleNew()
-      toast.success('Transação realizada com sucesso!')
-    }
-
-    const response = await transactionServices.getAll()
-    setExtract(response || [])
-  }
+    };
+  
+    await transactionServices.create(form);
+    handleNew();
+    
+    showSuccessToast({ message: 'Transação realizada com sucesso!'})
+  
+    const response = await transactionServices.getAll();
+    setExtract(response || []);
+  };
+  
 
   const handleCancelTransaction = () => {
     reset();

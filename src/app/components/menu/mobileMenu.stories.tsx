@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { MobileMenu } from './menu'
+import { MobileMenu } from './Menu'
 
 const meta: Meta<typeof MobileMenu> = {
    title: 'Tech Challenge Components/MobileMenu',    

@@ -6,6 +6,7 @@ import { useTransaction } from '@/app/context/TransactionContext';
 import { ITransaction } from '@/app/interfaces/transactionModels';
 import { toast } from 'react-toastify';
 import { sortExtractByAscDate } from '@/app/shared/utils';
+import { showConfirmToast, showSuccessToast } from '../showCustomToast/showCustomToast';
 
 export default function AccountStatement() {
   const [updatedTransactions, setUpdatedTransactions] = useState<ITransaction[]>([]);
@@ -28,20 +29,11 @@ export default function AccountStatement() {
 
         setUpdatedTransactions(remainingTransactions)
 
-        toast.success('Transação excluída com sucesso!')
+        showSuccessToast({ message: 'Transação excluída com sucesso!'})
+
       }
     } catch (error) {
       console.error('Error deleting transaction:', error)
-    }
-  };
-
-  const handleTransactionDeleteConfirmation = (transactionId: string) => {
-    const confirmDelete = window.confirm(
-      'Você tem certeza que deseja excluir esta transação?'
-    )
-
-    if (confirmDelete) {
-      handleTransactionDelete(transactionId)
     }
   }
 
@@ -54,7 +46,7 @@ export default function AccountStatement() {
       <ul className="flex flex-col gap-5 text-left pt-5">
         {updatedTransactions.length > 0 ? (
           updatedTransactions.map((transaction, index) => (
-            <TransactionItem item={transaction} key={index} onDelete={() => handleTransactionDeleteConfirmation(transaction.id!)} />
+            <TransactionItem item={transaction} key={index} onDelete={() => showConfirmToast({ onClick: () => handleTransactionDelete(transaction.id!), type: "delete" })} />
           ))
         ) : (
           <span className="text-gray-500 text-center">

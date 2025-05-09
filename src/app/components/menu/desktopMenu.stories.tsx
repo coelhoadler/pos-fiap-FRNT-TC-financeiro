@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { DesktopMenu } from './menu'
+import { DesktopMenu } from './Menu'
 
 const meta: Meta<typeof DesktopMenu> = {
    title: 'Tech Challenge Components/DesktopMenu',    
