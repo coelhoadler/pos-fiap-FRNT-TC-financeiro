@@ -50,16 +50,13 @@ export default function RootLayout({
             pauseOnHover
             theme="light" 
             />
-          <main className="w-screen flex justify-center min-w-[320px] min-h-screen h-auto pt-[116px] pb-[1rem]">
-            <div className="lg:grid-cols-[250px_auto_350px] lg:grid-colums md:grid-cols-1 w-[95%] md:w-[80%] grid gap-3 grid-cols-1">
+          <main className="flex justify-center min-w-[320px] pt-[116px] pb-[1rem] max-w-[80%] m-auto max-lg:max-w-full max-lg:px-[15px] max-lg:pb-7">
+            <div className="lg:grid-cols-[250px_auto] lg:grid-colums md:grid-cols-1 w-full  grid gap-3 grid-cols-1">
               <div className="lg:justify-center lg:items-start max-sm:hidden flex justify-center items-center box-content grow-1">
                 <DesktopMenu />
               </div>
-              <div className="lg:justify-center items-center md:items-start flex grow-3 justify-center">
+              <div className="lg:justify-center items-center md:items-start flex grow-3 justify-center max-lg:pt-5">
                 {children}
-              </div>
-              <div className="lg:justify-center lg:items-start md:items-end flex justify-center items-center grow-1 h-full">
-                <AccountStatement />
               </div>
             </div>
           </main>
