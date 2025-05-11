@@ -90,6 +90,36 @@
       "amount": "R$ 120,00",
       "date": "2025-05-09T00:06:40.246Z",
       "accountNumber": "123456789"
+    },
+    {
+      "id": "0bc7",
+      "typeTransaction": {
+        "id": "1",
+        "description": "Câmbio e Moedas"
+      },
+      "amount": "R$ 324,23",
+      "date": "2025-05-09T00:58:00.101Z",
+      "accountNumber": "123456789"
+    },
+    {
+      "id": "1b6c",
+      "typeTransaction": {
+        "id": "1",
+        "description": "Câmbio e Moedas"
+      },
+      "amount": "R$ 120,50",
+      "date": "2025-05-11T15:01:34.529Z",
+      "accountNumber": "123456789"
+    },
+    {
+      "typeTransaction": {
+        "id": "2",
+        "description": "DOC/TED"
+      },
+      "amount": "R$ 131,50",
+      "date": "2025-05-11T15:02:08.215Z",
+      "accountNumber": "123456789",
+      "id": "c8ec"
     }
   ]
 }
