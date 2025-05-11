@@ -167,7 +167,7 @@ const FormTransaction = () => {
         )}
       </fieldset>
 
-      <section className='flex gap-2'>
+      <section className='flex gap-2 max-md:flex-wrap'>
         <Button primary type="submit" label={id ? "Atualizar transação" : "Concluir transação"} />
         {id &&
           <Button type="button" label="Cancelar" onClick={() => handleCancelTransaction()} />

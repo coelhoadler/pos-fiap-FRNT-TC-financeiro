@@ -1,7 +1,9 @@
+import AccountStatement from "@/app/components/accountStatement/AccountStatement";
+
 export default function Extract() {
-    return (
-        <>
-            <h1>Página de Extract</h1>
-        </>
-    );
+  return (
+    <div className="flex gap-3 w-full">
+      <AccountStatement destinationPageName="extract-page" />
+    </div>
+  );
 }
