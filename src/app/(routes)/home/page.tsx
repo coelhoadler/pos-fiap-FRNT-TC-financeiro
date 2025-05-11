@@ -1,10 +1,8 @@
 
 import AccountStatement from '@/app/components/accountStatement/AccountStatement';
 import CardBalance from '@/app/components/cardBalance/cardBalance'
-import FormTransaction from '@/app/components/FormTransaction/FormTransaction'
+import FormTransaction from '@/app/components/transaction/transaction'
 import '@/app/styles/globals.css';
-
-
 
 export default function Home() {
   return (

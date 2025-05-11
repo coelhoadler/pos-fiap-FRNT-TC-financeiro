@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import FormTransaction from './formTransaction'
+import FormTransaction from './transaction'
 
 const meta: Meta<typeof FormTransaction> = {
     title: 'Tech Challenge Components/FormTransaction',

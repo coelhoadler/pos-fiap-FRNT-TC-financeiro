@@ -1,22 +1,16 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
 import './styles/globals.css';
-import Header from './components/header/header';
+import 'react-toastify/dist/ReactToastify.css';
+import { Roboto } from 'next/font/google';
 
+import Header from './components/header/header';
 import { TransactionProvider } from './context/TransactionContext';
 import { DesktopMenu } from './components/menu/menu';
 import AccountStatement from './components/accountStatement/AccountStatement';
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+const roboto = Roboto({
+  subsets: ['latin']
 });
 
 export const metadata: Metadata = {
@@ -34,7 +28,7 @@ export default function RootLayout({
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased scroll-smooth`}
+        className={`${roboto.className} antialiased scroll-smooth`}
       >
         <Header nameUser={'Joana da Silva Oliveira'} />
         <TransactionProvider>

@@ -1,4 +1,4 @@
-import { IApiServices } from '../interfaces/ApiServices';
+import { IApiServices } from '../interfaces/apiServices';
 import axiosClient from './axiosClient';
 
 export class ApiServices<T> implements IApiServices<T> {
