@@ -9,7 +9,6 @@ import { DesktopMenu } from './components/menu/menu';
 import { ToastContainer } from "react-toastify";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
-
 const roboto = Roboto({
   subsets: ['latin']
 });
