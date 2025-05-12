@@ -6,8 +6,9 @@ import { Roboto } from 'next/font/google';
 import Header from './components/header/header';
 import { TransactionProvider } from './context/TransactionContext';
 import { DesktopMenu } from './components/menu/menu';
-import AccountStatement from './components/accountStatement/AccountStatement';
 import { ToastContainer } from "react-toastify";
+import { SpeedInsights } from "@vercel/speed-insights/next"
+
 
 const roboto = Roboto({
   subsets: ['latin']
@@ -51,6 +52,7 @@ export default function RootLayout({
               </div>
               <div className="lg:justify-center items-center md:items-start flex grow-3 justify-center max-lg:pt-5">
                 {children}
+                <SpeedInsights /> 
               </div>
             </div>
           </main>
