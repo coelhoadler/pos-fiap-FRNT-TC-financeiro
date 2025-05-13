@@ -1,10 +1,10 @@
 ## Autores do projeto 
 
-- Adler Coelho
-- Erick 
-- Robson 
-- Luiz Paulo 
-- Virgílio Cano
+- [@Adler Coelho](https://www.linkedin.com/in/adlercoelhosantos/)
+- [@Erick Nunes](https://www.linkedin.com/in/erick-nunes-bb81a9136/)
+- [@Robson Rodrigues](https://www.linkedin.com/in/robson-rodrigues-ribeiro/)
+- [@Luiz Paulo](https://www.linkedin.com/in/luizpaulocaldas/) 
+- [@Virgílio Cano](https://www.linkedin.com/in/virgiliocano/)
 
 ## Sobre o Projeto
 
@@ -25,25 +25,26 @@ node -v
 npm -v
 ```
 
-## Passo importante
+## Instalação
 
-Execute o comando abaixo para instalar os pacotes necessários do projeto (usando o NPM):
+Clone o repositório e instale as dependências:
 
 ```bash
+git clone https://github.com/coelhoadler/pos-fiap-FRNT-TC-financeiro.git
+cd pos-fiap-FRNT-TC-financeiro
 npm install
 ```
 
-## Inicialização do projeto
+## Scripts disponíveis
 
-Primeiro, execute o servidor de desenvolvimento:
+- `npm run dev`: Inicia o servidor de desenvolvimento.
+- `npm run build`: Gera a versão de produção.
+- `npm run start`: Inicia o servidor em produção.
+- `npm run dbserver`: Sobe o json-server para API fake.
+- `npm run storybook`: Inicia o Storybook para visualizar componentes.
+- `npm run test`: Executa os testes automatizados.
 
-```bash
-npm run dev
-```
-
-Segundo, abrir o endereço [http://localhost:3000](http://localhost:3000) em seu navegador para ver o resultado.
-
-### Segue abaixo descrição das bibliotecas utilizadas no projeto, com base no arquivo `package.json`:
+Abra o endereço [http://localhost:3000](http://localhost:3000) em seu navegador para ver o resultado.
 
 ### Dependências principais (`dependencies`):
 
@@ -75,6 +76,14 @@ Segundo, abrir o endereço [http://localhost:3000](http://localhost:3000) em seu
 
 ## Demo 🌐
 
-O projeto foi deployado na [Vercel](https://vercel.com/), através do link: [clique aqui](https://pos-fiap-frnt-tc-financ-git-361ee8-adler-coelho-santos-projects.vercel.app).
+O projeto foi deployado na [Vercel](https://vercel.com/), através do link: [clique aqui](https://pos-fiap-frnt-tc-financeiro.vercel.app/home).
 
 Porém para usar o nosso __Back-end__ é necessário rodar o projeto localmente.
+
+## Contribuindo
+
+Contribuições são bem-vindas! Abra uma issue ou envie um pull request.
+
+## Licença
+
+Este projeto está sob a licença MIT.
