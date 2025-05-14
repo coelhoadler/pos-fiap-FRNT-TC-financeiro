@@ -46,18 +46,22 @@ const FormTransaction = () => {
   }, [typeTransaction, setTypeTransactionOptions])
 
   useEffect(() => {
+    if (!typeTransactionOptions || typeTransactionOptions.length === 0) return;
     if (id) {
-      setValueWatched(valueEdit)
-      setValue('typeTransaction', typeTransactionEdit.id)
+      setValueWatched(valueEdit);
+      setValue("typeTransaction", typeTransactionEdit.id);
     }
 
     if (!id) {
-      setValueWatched('')
-      setValue('value', '')
-      setValue('typeTransaction', '')
-      setTypeTransactionEdit({ id: '', description: '' })
+      setValueWatched("");
+      setValue("value", "");
+      setValue("typeTransaction", "");
+      setTypeTransactionEdit({ id: "", description: "" });
     }
-  }, [id])
+  }, [id, typeTransactionOptions]);
+
+
+  
 
   const onSubmit: SubmitHandler<IInputs> = async () => {
     const optionId = watch('typeTransaction')

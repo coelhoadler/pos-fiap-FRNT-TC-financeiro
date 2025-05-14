@@ -1,20 +1,20 @@
-import React from 'react';
-import { LuPencil } from 'react-icons/lu';
-import { FaTrashAlt } from 'react-icons/fa';
-import { ITransaction } from '@/app/interfaces/transactionModels';
-import { formatDate, formatTime } from '@/app/shared/utils';
-import { useTransaction } from '@/app/context/TransactionContext';
+import React from "react";
+import { LuPencil } from "react-icons/lu";
+import { FaTrashAlt } from "react-icons/fa";
+import { ITransaction } from "@/app/interfaces/transactionModels";
+import { formatDate, formatTime } from "@/app/shared/utils";
+import { useTransaction } from "@/app/context/TransactionContext";
 
 interface TransactionItemProps {
   item: Partial<ITransaction>;
-  destinationPageName?: string;
   onDelete: (transactionId: string) => void;
+  onEdit?: () => void;
 }
 
 const TransactionItem: React.FC<TransactionItemProps> = ({
   item,
-  destinationPageName,
   onDelete,
+  onEdit,
   ...props
 }) => {
   const { setId, setTypeTransactionEdit, setValueEdit } = useTransaction();
@@ -49,11 +49,7 @@ const TransactionItem: React.FC<TransactionItemProps> = ({
           </p>
         </div>
         <p
-          className={`text-sm flex flex-col gap-3.5 text-white ${
-            destinationPageName && destinationPageName === "extract-page"
-              ? "hidden"
-              : ""
-          }`}
+          className={"text-sm flex flex-col gap-3.5 text-white"}
         >
           <button
             title="Editar"
@@ -61,6 +57,7 @@ const TransactionItem: React.FC<TransactionItemProps> = ({
             onClick={(e) => {
               e.stopPropagation();
               handleEditTransaction(item as ITransaction);
+              onEdit?.();
             }}
           >
             <LuPencil size={18} />
