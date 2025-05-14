@@ -6,6 +6,7 @@ import { useTransaction } from "@/app/context/TransactionContext";
 import { ITransaction } from "@/app/interfaces/transactionModels";
 import { toast } from "react-toastify";
 import { sortExtractByAscDate } from "@/app/shared/utils";
+import { accountServices } from "@/app/api/accountServices/accountServices";
 
 type TAccountStatement = {
   destinationPageName?: string;
@@ -18,7 +19,7 @@ export default function AccountStatement({
     ITransaction[]
   >([]);
 
-  const { extract, transactionServices } = useTransaction();
+  const { extract, transactionServices, setBalance } = useTransaction();
 
   useEffect(() => {
     const extractOrdered = sortExtractByAscDate(extract || []);
@@ -34,6 +35,7 @@ export default function AccountStatement({
           (transaction) => transaction.id !== transactionId
         );
 
+        handlerUpdateAccount(remainingTransactions)
         setUpdatedTransactions(remainingTransactions);
 
         toast.success("Transação excluída com sucesso!");
@@ -52,6 +54,24 @@ export default function AccountStatement({
       handleTransactionDelete(transactionId);
     }
   };
+
+  const calculateTotalAmount = (responseData: ITransaction[]) => {
+    return responseData.reduce((total, item) => {
+      const amount = parseFloat(item.amount.replace('R$', '').trim().replace('.', '').replace(',', '.'));
+      return total + amount;
+    }, 0);
+  };
+
+  const handlerUpdateAccount = async (responseData: ITransaction[]) => {
+    const accountJoana =  {
+      accountNumber: '123456789',
+      balance: calculateTotalAmount(responseData || []),
+      currency: 'BRL',
+      accountType: 'Conta Corrente'
+    }
+    setBalance(accountJoana.balance)
+    await accountServices.updateAccountById('123456789', accountJoana);
+  }
 
   return (
     <div className="bg-gray-100 p-8 rounded-xl w-full max-w-full h-full shadow-md">
