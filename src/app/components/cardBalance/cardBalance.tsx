@@ -1,13 +1,29 @@
 'use client'
 
+import { useTransaction } from "@/app/context/TransactionContext";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
-export default function CardBalance({ balance: valueStart }: { balance: number }) {
-  const [showBalance, setShowBalance] = useState(true);
+export default function CardBalance({ balance: amount }: Readonly<{ balance: number }>) {
+  const [showBalance, setShowBalance] = useState<boolean>(true);
+  const [balanceFormatted, setBalanceFormatted] = useState<string>("");
   const date: string = new Date().toLocaleDateString("pt-br", { weekday: "long", day: "2-digit", month: "2-digit", year: "numeric", });
-  const saldoFormato = (valueStart || 0).toLocaleString("pt-br", { style: "currency", currency: "BRL" });
+  const { balance  } = useTransaction();
+
+  /**
+   * Function to format the account balance value in reais
+   * amount: Initial account value when application starts.
+   * balance: Value of the updated statement total.
+   */
+  useEffect(() => {
+    if (balance > 0) {
+      setBalanceFormatted((balance || 0).toLocaleString("pt-br", { style: "currency", currency: "BRL" }));
+    } else {
+      setBalanceFormatted((amount || 0).toLocaleString("pt-br", { style: "currency", currency: "BRL" }));
+    }
+  }, [balance]);
+  
   return (
     <div className="flex relative max-sm:flex-col max-sm:h-[700px] sm:min-h-[350px] w-full md:min-w-[320px] text-white bg-primary rounded-[10px]">
       <Image
@@ -39,7 +55,7 @@ export default function CardBalance({ balance: valueStart }: { balance: number }
           </svg>
 
         </div>
-        {showBalance && <span className="text-3xl pt-2 mt-2">{saldoFormato}</span>}
+        {showBalance && <span className="text-3xl pt-2 mt-2">{balanceFormatted}</span>}
         {!showBalance && <span className="text-3xl text-white pt-2 mt-2">• • • •</span>}
       </div>
 

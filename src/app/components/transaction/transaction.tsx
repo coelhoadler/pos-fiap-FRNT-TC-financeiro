@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { CurrencyInput } from 'react-currency-mask';
 
 import { transactionServices } from '@/app/api/transactionServices/transactionServices';
+import { accountServices } from '@/app/api/accountServices/accountServices';
 import Button from '@/app/components/button/button';
 import Title from '../title/title';
 
@@ -19,7 +20,7 @@ import { toast } from "react-toastify";
 
 const FormTransaction = () => {
 
-  const { id, setId, typeTransactionEdit, valueEdit, setExtract, typeTransaction, setTypeTransactionEdit } = useTransaction()
+  const { id, setId, typeTransactionEdit, valueEdit, setExtract, typeTransaction, setTypeTransactionEdit, setBalance } = useTransaction()
   const [inputKey, setInputKey] = useState(0);
 
   const handleNew = () => {
@@ -83,7 +84,26 @@ const FormTransaction = () => {
 
     const response = await transactionServices.getAll()
     setExtract(response || [])
+    handlerUpdateAccount(response || [])
   }
+
+  const calculateTotalAmount = (responseData: ITransaction[]) => {
+    return responseData.reduce((total, item) => {
+      const amount = parseFloat(item.amount.replace('R$', '').trim().replace('.', '').replace(',', '.'));
+      return total + amount;
+    }, 0);
+  };
+
+  const handlerUpdateAccount = async (responseData: ITransaction[]) => {
+      const accountJoana =  {
+        accountNumber: '123456789',
+        balance: calculateTotalAmount(responseData || []),
+        currency: 'BRL',
+        accountType: 'Conta Corrente'
+      }
+      setBalance(accountJoana.balance);
+      await accountServices.updateAccountById('123456789', accountJoana);
+    }
 
   const handleCancelTransaction = () => {
     reset();
