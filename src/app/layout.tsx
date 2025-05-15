@@ -1,22 +1,16 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
 import './styles/globals.css';
-import Header from './components/header/header';
-
-import { TransactionProvider } from './context/TransactionContext';
-import { DesktopMenu } from './components/menu/Menu';
-import AccountStatement from './components/accountStatement/AccountStatement';
-import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { Roboto } from 'next/font/google';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
+import Header from './components/header/header';
+import { TransactionProvider } from './context/TransactionContext';
+import { DesktopMenu } from './components/menu/menu';
+import { ToastContainer } from "react-toastify";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+const roboto = Roboto({
+  subsets: ['latin']
 });
 
 export const metadata: Metadata = {
@@ -34,7 +28,7 @@ export default function RootLayout({
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased scroll-smooth`}
+        className={`${roboto.className} antialiased scroll-smooth`}
       >
         <Header nameUser={'Joana da Silva Oliveira'} />
         <TransactionProvider>
@@ -51,16 +45,14 @@ export default function RootLayout({
             pauseOnHover
             theme="light" 
             />
-          <main className="w-screen flex justify-center min-w-[320px] min-h-screen h-auto pt-[116px] pb-[1rem]">
-            <div className="lg:grid-cols-[250px_auto_350px] lg:grid-colums md:grid-cols-1 w-[95%] md:w-[80%] grid gap-3 grid-cols-1">
+          <main className="flex justify-center min-w-[320px] pt-[116px] pb-[1rem] max-w-[80%] m-auto max-lg:max-w-full max-lg:px-[15px] max-lg:pb-7">
+            <div className="lg:grid-cols-[250px_auto] lg:grid-colums md:grid-cols-1 w-full  grid gap-3 grid-cols-1">
               <div className="lg:justify-center lg:items-start max-sm:hidden flex justify-center items-center box-content grow-1">
                 <DesktopMenu />
               </div>
-              <div className="lg:justify-center items-center md:items-start flex grow-3 justify-center">
+              <div className="lg:justify-center items-center md:items-start flex grow-3 justify-center max-lg:pt-5">
                 {children}
-              </div>
-              <div className="lg:justify-center lg:items-start md:items-end flex justify-center items-center grow-1 h-full">
-                <AccountStatement />
+                <SpeedInsights /> 
               </div>
             </div>
           </main>

@@ -8,7 +8,7 @@
   },
   "account": {
     "accountNumber": "123456789",
-    "balance": 0,
+    "balance": 576.61,
     "currency": "BRL",
     "accountType": "Conta Corrente"
   },
@@ -40,5 +40,76 @@
       "description": "Conta Salário"
     }
   ],
-  "transactions": []
+  "transactions": [
+    {
+      "typeTransaction": {
+        "id": "1",
+        "description": "Câmbio e Moedas"
+      },
+      "amount": "R$ 8,90",
+      "date": "2025-05-07T10:31:27.540Z",
+      "accountNumber": "123456789",
+      "id": "3844"
+    },
+    {
+      "id": "87fd",
+      "typeTransaction": {
+        "id": "1",
+        "description": "Câmbio e Moedas"
+      },
+      "amount": "R$ 0,99",
+      "date": "2025-05-07T10:31:39.926Z",
+      "accountNumber": "123456789"
+    },
+    {
+      "id": "3d5c",
+      "typeTransaction": {
+        "id": "2",
+        "description": "DOC/TED"
+      },
+      "amount": "R$ 1,00",
+      "date": "2025-05-07T10:31:45.061Z",
+      "accountNumber": "123456789"
+    },
+    {
+      "id": "3c6c",
+      "typeTransaction": {
+        "id": "1",
+        "description": "Câmbio e Moedas"
+      },
+      "amount": "R$ 0,99",
+      "date": "2025-05-07T10:39:49.219Z",
+      "accountNumber": "123456789"
+    },
+    {
+      "id": "07b5",
+      "typeTransaction": {
+        "id": "3",
+        "description": "Empréstimo e Financiamento"
+      },
+      "amount": "R$ 120,00",
+      "date": "2025-05-09T00:06:40.246Z",
+      "accountNumber": "123456789"
+    },
+    {
+      "id": "0bc7",
+      "typeTransaction": {
+        "id": "1",
+        "description": "Câmbio e Moedas"
+      },
+      "amount": "R$ 324,23",
+      "date": "2025-05-09T00:58:00.101Z",
+      "accountNumber": "123456789"
+    },
+    {
+      "id": "1b6c",
+      "typeTransaction": {
+        "id": "1",
+        "description": "Câmbio e Moedas"
+      },
+      "amount": "R$ 120,50",
+      "date": "2025-05-11T15:01:34.529Z",
+      "accountNumber": "123456789"
+    }
+  ]
 }

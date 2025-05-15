@@ -1,18 +1,29 @@
 
-import CardBalance from '@/app/components/cardBalance/CardBalance'
-import FormTransaction from '@/app/components/FormTransaction/FormTransaction';
-
+import { accountServices } from '@/app/api/accountServices/accountServices';
+import AccountStatement from '@/app/components/accountStatement/AccountStatement';
+import CardBalance from '@/app/components/cardBalance/cardBalance'
+import FormTransaction from '@/app/components/transaction/transaction'
+import { IAccount } from '@/app/interfaces/accountModel';
 import '@/app/styles/globals.css';
 
+export default async function Home() {
+  let accountStart: Partial<IAccount>;
 
+  try {
+    accountStart = await accountServices.getAccountById("123456789"); // Joana accountNumber is 123456789;
+  } catch (error) {
+    accountStart = { balance: 0 };
+  }
 
-export default function Home() {
   return (
-    <>
-      <div className="flex flex-col w-full h-full gap-8 mx-auto p-5 bg-white rounded-[8px] shadow-md">
-        <CardBalance balance={1000} />
-        <FormTransaction />
+      <div className="flex w-full h-full gap-3 mx-auto max-lg:flex-col ">
+        <div className="flex flex-col bg-white rounded-[8px] shadow-md p-5 w-full gap-4">
+          <CardBalance balance={accountStart.balance || 0} />
+          <FormTransaction />
+        </div>
+        <div className="min-w-[350px]">
+          <AccountStatement />
+        </div>
       </div>
-    </>
   );
 }

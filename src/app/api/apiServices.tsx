@@ -1,5 +1,7 @@
+
 import { IApiServices } from '../interfaces/ApiServices';
 import axiosClient from './axiosClient';
+import { IAccount } from '../interfaces/accountModel';
 
 export class ApiServices<T> implements IApiServices<T> {
   private baseUrl: string;
@@ -30,5 +32,20 @@ export class ApiServices<T> implements IApiServices<T> {
 
   async delete(id: string): Promise<void> {
     await axiosClient.delete(`${this.baseUrl}/${id}`);
+  }
+
+  /**
+   * Get Joana account by account number
+   * @param accountNumber Joana account number
+   * @returns object IAccount
+   */
+  async getAccountById(accountNumber: string): Promise<IAccount> {
+    const response = await axiosClient.get<IAccount>(`${this.baseUrl}`);
+    return response.data;
+  }
+
+  async updateAccountById(accountNumber: string, data: Partial<IAccount>): Promise<IAccount> {
+    const response = await axiosClient.put<IAccount>(`${this.baseUrl}`, data);
+    return response.data;
   }
 }

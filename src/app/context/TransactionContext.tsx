@@ -6,6 +6,7 @@ import { ApiServices } from "../api/apiServices";
 import { ITransaction, ITypeTransaction } from "../interfaces/transactionModels";
 import { typeTransactionService } from "../api/typeTransactionService/typeTransactionServices";
 import { transactionServices } from "../api/transactionServices/transactionServices";
+import { accountServices } from "../api/accountServices/accountServices";
 
 type TransactionContextType = {
   id: string;
@@ -20,6 +21,8 @@ type TransactionContextType = {
   setTypeTransaction: (typeTransaction: ITypeTransaction[]) => void;
   typeTransactionEdit: ITypeTransaction;
   setTypeTransactionEdit: (typeTransaction: ITypeTransaction) => void;
+  balance: number;
+  setBalance: (balance: number) => void;
 };
  
 const TransactionContext = createContext<TransactionContextType | undefined>(undefined);
@@ -34,11 +37,13 @@ export const TransactionProvider = ({ children }: TransactionProviderProps) => {
   const [extract, setExtract] = useState<any[]>([])
   const [typeTransaction, setTypeTransaction] = useState<ITypeTransaction[]>([])
   const [typeTransactionEdit, setTypeTransactionEdit] = useState<ITypeTransaction>({} as ITypeTransaction)
+  const [balance, setBalance] = useState<number>(0)
 
   useEffect(() => {
     const fetchTransaction = async () => { 
       const responseData = await transactionServices.getAll();
       setExtract(responseData || []);
+      handlerUpdateAccount(responseData || []);
     }
     fetchTransaction()
 
@@ -49,6 +54,24 @@ export const TransactionProvider = ({ children }: TransactionProviderProps) => {
 
     fetchTypeTransaction()
   },[])
+
+  const calculateTotalAmount = (responseData: ITransaction[]) => {
+      return responseData.reduce((total, item) => {
+        const amount = parseFloat(item.amount.replace('R$', '').trim().replace('.', '').replace(',', '.'));
+        return total + amount;
+      }, 0);
+    };
+  
+    const handlerUpdateAccount = async (responseData: ITransaction[]) => {
+      const accountJoana =  {
+        accountNumber: '123456789',
+        balance: calculateTotalAmount(responseData || []),
+        currency: 'BRL',
+        accountType: 'Conta Corrente'
+      }
+      setBalance(accountJoana.balance)
+      await accountServices.updateAccountById('123456789', accountJoana);
+    }
 
   return (
     <TransactionContext.Provider value={{ 
@@ -62,7 +85,9 @@ export const TransactionProvider = ({ children }: TransactionProviderProps) => {
       typeTransactionService: typeTransactionService,
       typeTransaction,
       setTypeTransaction,
-      typeTransactionEdit, setTypeTransactionEdit    
+      typeTransactionEdit, setTypeTransactionEdit,
+      balance,
+      setBalance
     }}>
         {children}
     </TransactionContext.Provider>

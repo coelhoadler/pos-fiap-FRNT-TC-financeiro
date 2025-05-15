@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import CardBalance from './CardBalance';
+import CardBalance from './cardBalance';
 
 const meta: Meta<typeof CardBalance> = {
   title: 'Tech Challenge Components/CardBalance',
