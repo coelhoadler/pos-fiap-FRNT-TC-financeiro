@@ -8,7 +8,7 @@
   },
   "account": {
     "accountNumber": "123456789",
-    "balance": 0,
+    "balance": 576.61,
     "currency": "BRL",
     "accountType": "Conta Corrente"
   },
@@ -110,16 +110,6 @@
       "amount": "R$ 120,50",
       "date": "2025-05-11T15:01:34.529Z",
       "accountNumber": "123456789"
-    },
-    {
-      "typeTransaction": {
-        "id": "2",
-        "description": "DOC/TED"
-      },
-      "amount": "R$ 131,50",
-      "date": "2025-05-11T15:02:08.215Z",
-      "accountNumber": "123456789",
-      "id": "c8ec"
     }
   ]
 }
