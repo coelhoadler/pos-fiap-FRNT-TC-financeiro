@@ -7,7 +7,14 @@ import { IAccount } from '@/app/interfaces/accountModel';
 import '@/app/styles/globals.css';
 
 export default async function Home() {
-  const accountStart: IAccount = await accountServices.getAccountById("123456789"); // Joana accountNumber is 123456789;
+  let accountStart: Partial<IAccount>;
+
+  try {
+    accountStart = await accountServices.getAccountById("123456789"); // Joana accountNumber is 123456789;
+  } catch (error) {
+    accountStart = { balance: 0 };
+  }
+
   return (
       <div className="flex w-full h-full gap-3 mx-auto max-lg:flex-col ">
         <div className="flex flex-col bg-white rounded-[8px] shadow-md p-5 w-full gap-4">
