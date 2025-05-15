@@ -9,11 +9,11 @@ import { sortExtractByAscDate } from "@/app/shared/utils";
 import { accountServices } from "@/app/api/accountServices/accountServices";
 
 type TAccountStatement = {
-  destinationPageName?: string;
+  onEditTransaction?: () => void;
 };
 
 export default function AccountStatement({
-  destinationPageName,
+  onEditTransaction,
 }: TAccountStatement) {
   const [updatedTransactions, setUpdatedTransactions] = useState<
     ITransaction[]
@@ -83,12 +83,12 @@ export default function AccountStatement({
         {updatedTransactions.length > 0 ? (
           updatedTransactions.map((transaction, index) => (
             <TransactionItem
-              destinationPageName={destinationPageName}
               item={transaction}
               key={index}
               onDelete={() =>
                 handleTransactionDeleteConfirmation(transaction.id!)
               }
+              onEdit={onEditTransaction}
             />
           ))
         ) : (
