@@ -7,6 +7,7 @@ import { ITransaction, ITypeTransaction } from "../interfaces/transactionModels"
 import { typeTransactionService } from "../api/typeTransactionService/typeTransactionServices";
 import { transactionServices } from "../api/transactionServices/transactionServices";
 import { accountServices } from "../api/accountServices/accountServices";
+import { alertDialogTypes } from "../enums/alertDialogTypes";
 
 type TransactionContextType = {
   id: string;

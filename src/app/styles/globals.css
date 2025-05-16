@@ -7,3 +7,19 @@
 body {
   background-color: var(--background-color);
 }
+
+.toast-centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f0f4f8;
+  color: #1a1a1a;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  font-weight: 500;
+  padding: 1rem 1.5rem;
+  min-width: 300px;
+  text-align: center;
+  z-index: 9999;
+}

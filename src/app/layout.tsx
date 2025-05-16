@@ -8,6 +8,8 @@ import { TransactionProvider } from './context/TransactionContext';
 import { DesktopMenu } from './components/menu/menu';
 import { ToastContainer } from "react-toastify";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { StyledEngineProvider } from '@mui/material/styles';
+import 'react-toastify/dist/ReactToastify.css';
 
 const roboto = Roboto({
   subsets: ['latin']
@@ -31,32 +33,34 @@ export default function RootLayout({
         className={`${roboto.className} antialiased scroll-smooth`}
       >
         <Header nameUser={'Joana da Silva Oliveira'} />
-        <TransactionProvider>
-          <ToastContainer
-            position="top-center"
-            toastClassName="!top-[250px] !mx-auto"            
-            autoClose={3000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light" 
+         <StyledEngineProvider injectFirst>
+          <TransactionProvider>
+            <ToastContainer
+              position="top-center"
+              toastClassName="toast-centered"
+              autoClose={3000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
             />
-          <main className="flex justify-center min-w-[320px] pt-[116px] pb-[1rem] max-w-[80%] m-auto max-lg:max-w-full max-lg:px-[15px] max-lg:pb-7">
-            <div className="lg:grid-cols-[250px_auto] lg:grid-colums md:grid-cols-1 w-full  grid gap-3 grid-cols-1">
-              <div className="lg:justify-center lg:items-start max-sm:hidden flex justify-center items-center box-content grow-1">
-                <DesktopMenu />
+            <main className="flex justify-center min-w-[320px] pt-[116px] pb-[1rem] max-w-[80%] m-auto max-lg:max-w-full max-lg:px-[15px] max-lg:pb-7">
+              <div className="lg:grid-cols-[250px_auto] lg:grid-colums md:grid-cols-1 w-full  grid gap-3 grid-cols-1">
+                <div className="lg:justify-center lg:items-start max-sm:hidden flex justify-center items-center box-content grow-1">
+                  <DesktopMenu />
+                </div>
+                <div className="lg:justify-center items-center md:items-start flex grow-3 justify-center max-lg:pt-5">
+                  {children}
+                  <SpeedInsights /> 
+                </div>
               </div>
-              <div className="lg:justify-center items-center md:items-start flex grow-3 justify-center max-lg:pt-5">
-                {children}
-                <SpeedInsights /> 
-              </div>
-            </div>
-          </main>
-        </TransactionProvider>
+            </main>
+          </TransactionProvider>
+        </StyledEngineProvider>
       </body>
     </html>
   );

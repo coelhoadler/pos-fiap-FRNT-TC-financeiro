@@ -17,10 +17,18 @@ import {
 import { useTransaction } from "@/app/context/TransactionContext";
 import { IInputs } from "@/app/interfaces/Form";
 import { toast } from "react-toastify";
+import AlertDialog from "../dialog/dialog";
+import * as React from 'react';
+import { alertDialogTypes } from "@/app/enums/alertDialogTypes";
+import { TAlertDialogType } from "@/app/types/TAlertDialogType";
+import SuccessSnackbar from "../successSnackbar/successSnackbar";
+
 
 type TFormTransaction = {
   onlyTransactionEditing?: () => void;
 };
+
+
 
 const FormTransaction = ({ onlyTransactionEditing }: TFormTransaction) => {
   const {
@@ -34,6 +42,11 @@ const FormTransaction = ({ onlyTransactionEditing }: TFormTransaction) => {
     setBalance,
   } = useTransaction();
   const [inputKey, setInputKey] = useState(0);
+  const [showConfirmDialog, setShowConfirmDialog]=useState(false)
+  const [dialogType, setDialogType] = useState<TAlertDialogType>({ type: alertDialogTypes.CONFIRM })
+  const [pendingFormData, setPendingFormData] = useState<ITransaction | null>(null)
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [idTemp, setIdTemp] = useState('')
 
   const handleNew = () => {
     reset({ value: "" });
@@ -63,6 +76,7 @@ const FormTransaction = ({ onlyTransactionEditing }: TFormTransaction) => {
     if (id) {
       setValueWatched(valueEdit);
       setValue("typeTransaction", typeTransactionEdit.id);
+      setDialogType({ type: alertDialogTypes.EDIT })
     }
 
     if (!id) {
@@ -70,6 +84,7 @@ const FormTransaction = ({ onlyTransactionEditing }: TFormTransaction) => {
       setValue("value", "");
       setValue("typeTransaction", "");
       setTypeTransactionEdit({ id: "", description: "" });
+      setDialogType({ type: alertDialogTypes.CONFIRM })
     }
   }, [id, typeTransactionOptions]);
 
@@ -87,25 +102,38 @@ const FormTransaction = ({ onlyTransactionEditing }: TFormTransaction) => {
       accountNumber: "123456789",
     };
 
+    setPendingFormData(form)
+    setShowConfirmDialog(true)
+  };
+
+  const handleConfirmSubmit = async () => {
+    if (!pendingFormData) return;
+
     if (id) {
-      await transactionServices.update(id, form);
-      toast.success("Transação alterada com sucesso!");
-      setId("");
-
-      // if (onlyTransactionEditing) {
-      //   onlyTransactionEditing();
-      // }
-
+      await transactionServices.update(id, pendingFormData);
+      setIdTemp(id)      
     } else {
-      await transactionServices.create(form);
-      handleNew();
-      toast.success("Transação realizada com sucesso!");
+      await transactionServices.create(pendingFormData);
+      handleNew();      
+      setIdTemp("")
     }
 
     const response = await transactionServices.getAll();
     setExtract(response || []);
     handlerUpdateAccount(response || []);
-  };
+
+    setPendingFormData(null);
+    setShowConfirmDialog(false);
+
+
+    toast.dismiss(); 
+    setShowSuccess(true);
+    
+    setId("")
+    
+  }
+
+
 
   const calculateTotalAmount = (responseData: ITransaction[]) => {
     return responseData.reduce((total, item) => {
@@ -116,9 +144,9 @@ const FormTransaction = ({ onlyTransactionEditing }: TFormTransaction) => {
     }, 0);
   };
 
-  const handleOnlyTransactionEditing = () => {
+  const handleOnlyTransactionEditing = () => {     
     if (onlyTransactionEditing) {
-      onlyTransactionEditing();
+          onlyTransactionEditing();
     }
   };
 
@@ -138,7 +166,7 @@ const FormTransaction = ({ onlyTransactionEditing }: TFormTransaction) => {
     setId("");
   };
 
-  return (
+  return (<>
     <form
       onSubmit={handleSubmit(onSubmit)}
       className="relative bg-gray-300 min-h-[633px] w-full min-w-[280px] rounded-[10px] shadow-md p-6 text-tertiary z-2"
@@ -256,6 +284,25 @@ const FormTransaction = ({ onlyTransactionEditing }: TFormTransaction) => {
         className="absolute bottom-0 left-0 max-h-[177px] max-w-[180px] rotate-180 z-[-1]"
       />
     </form>
+    {
+      <AlertDialog 
+        type={dialogType.type} 
+        open={showConfirmDialog} 
+        setOpen={setShowConfirmDialog}
+        handleConfirmSubmit={handleConfirmSubmit}
+      />
+    }
+
+    {
+       <SuccessSnackbar
+        open={showSuccess}
+        onClose={() => setShowSuccess(false)}
+        message={idTemp ? "Transação alterada com sucesso!" : "Transação realizada com sucesso!"}
+        duration={3000}
+      />
+    }
+
+    </>
   );
 };
 

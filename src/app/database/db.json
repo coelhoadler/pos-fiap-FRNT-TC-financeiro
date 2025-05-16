@@ -8,7 +8,7 @@
   },
   "account": {
     "accountNumber": "123456789",
-    "balance": 576.61,
+    "balance": 120665.57,
     "currency": "BRL",
     "accountType": "Conta Corrente"
   },
@@ -102,14 +102,254 @@
       "accountNumber": "123456789"
     },
     {
-      "id": "1b6c",
       "typeTransaction": {
         "id": "1",
         "description": "Câmbio e Moedas"
       },
-      "amount": "R$ 120,50",
-      "date": "2025-05-11T15:01:34.529Z",
+      "amount": "R$ 120.150,88",
+      "date": "2025-05-16T02:15:58.167Z",
+      "accountNumber": "123456789",
+      "id": "1b6c"
+    },
+    {
+      "id": "6021",
+      "typeTransaction": {
+        "id": "1",
+        "description": "Câmbio e Moedas"
+      },
+      "amount": "R$ 0,01",
+      "date": "2025-05-16T02:56:51.460Z",
       "accountNumber": "123456789"
+    },
+    {
+      "id": "4ff8",
+      "typeTransaction": {
+        "id": "3",
+        "description": "Empréstimo e Financiamento"
+      },
+      "amount": "R$ 0,07",
+      "date": "2025-05-16T02:58:12.491Z",
+      "accountNumber": "123456789"
+    },
+    {
+      "typeTransaction": {
+        "id": "1",
+        "description": "Câmbio e Moedas"
+      },
+      "amount": "R$ 0,18",
+      "date": "2025-05-16T04:23:09.039Z",
+      "accountNumber": "123456789",
+      "id": "3b82"
+    },
+    {
+      "id": "bdf6",
+      "typeTransaction": {
+        "id": "2",
+        "description": "DOC/TED"
+      },
+      "amount": "R$ 0,09",
+      "date": "2025-05-16T04:23:17.151Z",
+      "accountNumber": "123456789"
+    },
+    {
+      "id": "c173",
+      "typeTransaction": {
+        "id": "3",
+        "description": "Empréstimo e Financiamento"
+      },
+      "amount": "R$ 0,08",
+      "date": "2025-05-16T04:43:07.698Z",
+      "accountNumber": "123456789"
+    },
+    {
+      "id": "fcd6",
+      "typeTransaction": {
+        "id": "1",
+        "description": "Câmbio e Moedas"
+      },
+      "amount": "R$ 0,00",
+      "date": "2025-05-16T04:43:31.096Z",
+      "accountNumber": "123456789"
+    },
+    {
+      "id": "58bb",
+      "typeTransaction": {
+        "id": "2",
+        "description": "DOC/TED"
+      },
+      "amount": "R$ 0,03",
+      "date": "2025-05-16T04:43:45.179Z",
+      "accountNumber": "123456789"
+    },
+    {
+      "id": "6798",
+      "typeTransaction": {
+        "id": "3",
+        "description": "Empréstimo e Financiamento"
+      },
+      "amount": "R$ 0,03",
+      "date": "2025-05-16T04:44:09.721Z",
+      "accountNumber": "123456789"
+    },
+    {
+      "id": "15ae",
+      "typeTransaction": {
+        "id": "1",
+        "description": "Câmbio e Moedas"
+      },
+      "amount": "R$ 0,03",
+      "date": "2025-05-16T04:46:02.357Z",
+      "accountNumber": "123456789"
+    },
+    {
+      "id": "4ee7",
+      "typeTransaction": {
+        "id": "3",
+        "description": "Empréstimo e Financiamento"
+      },
+      "amount": "R$ 0,33",
+      "date": "2025-05-16T04:46:21.727Z",
+      "accountNumber": "123456789"
+    },
+    {
+      "id": "05c5",
+      "typeTransaction": {
+        "id": "3",
+        "description": "Empréstimo e Financiamento"
+      },
+      "amount": "R$ 0,33",
+      "date": "2025-05-16T04:47:29.836Z",
+      "accountNumber": "123456789"
+    },
+    {
+      "id": "5911",
+      "typeTransaction": {
+        "id": "3",
+        "description": "Empréstimo e Financiamento"
+      },
+      "amount": "R$ 0,03",
+      "date": "2025-05-16T04:48:04.219Z",
+      "accountNumber": "123456789"
+    },
+    {
+      "id": "8e12",
+      "typeTransaction": {
+        "id": "2",
+        "description": "DOC/TED"
+      },
+      "amount": "R$ 0,33",
+      "date": "2025-05-16T04:48:21.597Z",
+      "accountNumber": "123456789"
+    },
+    {
+      "id": "7541",
+      "typeTransaction": {
+        "id": "1",
+        "description": "Câmbio e Moedas"
+      },
+      "amount": "R$ 3,33",
+      "date": "2025-05-16T04:48:34.476Z",
+      "accountNumber": "123456789"
+    },
+    {
+      "id": "0025",
+      "typeTransaction": {
+        "id": "2",
+        "description": "DOC/TED"
+      },
+      "amount": "R$ 3,33",
+      "date": "2025-05-16T04:48:45.152Z",
+      "accountNumber": "123456789"
+    },
+    {
+      "id": "ecd5",
+      "typeTransaction": {
+        "id": "2",
+        "description": "DOC/TED"
+      },
+      "amount": "R$ 3,33",
+      "date": "2025-05-16T04:49:02.347Z",
+      "accountNumber": "123456789"
+    },
+    {
+      "id": "44ff",
+      "typeTransaction": {
+        "id": "1",
+        "description": "Câmbio e Moedas"
+      },
+      "amount": "R$ 3,33",
+      "date": "2025-05-16T04:49:20.533Z",
+      "accountNumber": "123456789"
+    },
+    {
+      "id": "e190",
+      "typeTransaction": {
+        "id": "1",
+        "description": "Câmbio e Moedas"
+      },
+      "amount": "R$ 3,33",
+      "date": "2025-05-16T04:49:38.471Z",
+      "accountNumber": "123456789"
+    },
+    {
+      "id": "9ba7",
+      "typeTransaction": {
+        "id": "3",
+        "description": "Empréstimo e Financiamento"
+      },
+      "amount": "R$ 0,33",
+      "date": "2025-05-16T04:49:57.104Z",
+      "accountNumber": "123456789"
+    },
+    {
+      "id": "5ed4",
+      "typeTransaction": {
+        "id": "1",
+        "description": "Câmbio e Moedas"
+      },
+      "amount": "R$ 0,03",
+      "date": "2025-05-16T04:50:12.003Z",
+      "accountNumber": "123456789"
+    },
+    {
+      "id": "b2c5",
+      "typeTransaction": {
+        "id": "1",
+        "description": "Câmbio e Moedas"
+      },
+      "amount": "R$ 3,33",
+      "date": "2025-05-16T04:50:26.605Z",
+      "accountNumber": "123456789"
+    },
+    {
+      "id": "38d5",
+      "typeTransaction": {
+        "id": "3",
+        "description": "Empréstimo e Financiamento"
+      },
+      "amount": "R$ 3,33",
+      "date": "2025-05-16T04:50:39.518Z",
+      "accountNumber": "123456789"
+    },
+    {
+      "id": "41a4",
+      "typeTransaction": {
+        "id": "2",
+        "description": "DOC/TED"
+      },
+      "amount": "R$ 33,33",
+      "date": "2025-05-16T04:50:52.436Z",
+      "accountNumber": "123456789"
+    },
+    {
+      "typeTransaction": {
+        "id": "3",
+        "description": "Empréstimo e Financiamento"
+      },
+      "amount": "R$ 0,04",
+      "date": "2025-05-16T05:28:55.263Z",
+      "accountNumber": "123456789",
+      "id": "acea"
     }
   ]
 }
