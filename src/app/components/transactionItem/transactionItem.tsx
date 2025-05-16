@@ -4,6 +4,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import { ITransaction } from "@/app/interfaces/transactionModels";
 import { formatDate, formatTime } from "@/app/shared/utils";
 import { useTransaction } from "@/app/context/TransactionContext";
+import Link from "next/link";
 
 interface TransactionItemProps {
   item: Partial<ITransaction>;
@@ -51,17 +52,19 @@ const TransactionItem: React.FC<TransactionItemProps> = ({
         <p
           className={"text-sm flex flex-col gap-3.5 text-white"}
         >
-          <button
-            title="Editar"
-            className="bg-primary rounded-full h-[40px] w-[40px] flex items-center justify-center cursor-pointer"
-            onClick={(e) => {
-              e.stopPropagation();
-              handleEditTransaction(item as ITransaction);
-              onEdit?.();
-            }}
-          >
-            <LuPencil size={18} />
-          </button>
+          <Link href="#transaction-form" onClick={(e) => e.preventDefault()}>
+            <button
+              title="Editar"
+              className="bg-primary rounded-full h-[40px] w-[40px] flex items-center justify-center cursor-pointer"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleEditTransaction(item as ITransaction);
+                onEdit?.();
+              }}
+            >
+              <LuPencil size={18} />
+            </button>
+          </Link>
           <button
             title="Excluir"
             className="bg-primary rounded-full h-[40px] w-[40px] flex items-center justify-center cursor-pointer"
