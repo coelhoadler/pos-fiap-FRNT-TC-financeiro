@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosClient = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_API_URL,
+    baseURL: "http://restful-api-vercel-flax.vercel.app:3000",
 });
 
 export default axiosClient;
