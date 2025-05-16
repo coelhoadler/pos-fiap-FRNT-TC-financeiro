@@ -141,6 +141,7 @@ const FormTransaction = ({ onlyTransactionEditing }: TFormTransaction) => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
+      className="relative bg-gray-300 min-h-[633px] w-full min-w-[280px] rounded-[10px] shadow-md p-6 text-tertiary z-2"
       id="transaction-form"
     >
       <Image
