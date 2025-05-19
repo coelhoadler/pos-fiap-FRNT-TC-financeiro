@@ -8,7 +8,7 @@
   },
   "account": {
     "accountNumber": "123456789",
-    "balance": 576.61,
+    "balance": 586.61,
     "currency": "BRL",
     "accountType": "Conta Corrente"
   },
@@ -52,14 +52,14 @@
       "id": "3844"
     },
     {
-      "id": "87fd",
       "typeTransaction": {
         "id": "1",
         "description": "Câmbio e Moedas"
       },
-      "amount": "R$ 0,99",
-      "date": "2025-05-07T10:31:39.926Z",
-      "accountNumber": "123456789"
+      "amount": "R$ 10,99",
+      "date": "2025-05-16T12:07:56.116Z",
+      "accountNumber": "123456789",
+      "id": "87fd"
     },
     {
       "id": "3d5c",
