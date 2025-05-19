@@ -1,11 +1,15 @@
-"use client";
-
 import Image from "next/image";
 import { MobileMenu } from "../menu/menu";
 
 export type THeader = {
   nameUser: string;
 };
+
+export async function generateStaticParams(): Promise<any> {
+    const response = await fetch("http://localhost:4000/profile");
+    const { name } = await response.json();
+    return { nameUser: name };
+}
 
 const Header = ({ nameUser }: THeader) => {
   return (
