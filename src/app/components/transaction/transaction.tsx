@@ -48,9 +48,7 @@ const FormTransaction = ({ onlyTransactionEditing }: TFormTransaction) => {
     setValue,
     reset,
   } = useForm<IInputs>();
-  const [typeTransactionOptions, setTypeTransactionOptions] = useState<
-    ITypeTransaction[]
-  >([]);
+  const [typeTransactionOptions, setTypeTransactionOptions] = useState<ITypeTransaction[]>([]);
 
   const [valueWatched, setValueWatched] = useState<string>("");
 

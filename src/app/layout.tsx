@@ -24,6 +24,7 @@ export default async function ServerSidePage({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
   const { name, error } = await getUserProfile();
 
   return (
