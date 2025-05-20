@@ -5,12 +5,6 @@ export type THeader = {
   nameUser: string;
 };
 
-export async function generateStaticParams(): Promise<any> {
-    const response = await fetch("http://localhost:4000/profile");
-    const { name } = await response.json();
-    return { nameUser: name };
-}
-
 const Header = ({ nameUser }: THeader) => {
   return (
     <header className="flex justify-between items-center bg-primary h-[96px] p-1.5 fixed w-full z-30 shadow-[0px_2px_10px_1px_rgba(0,0,0,0.75)]">

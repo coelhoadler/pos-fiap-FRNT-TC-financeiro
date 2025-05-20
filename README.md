@@ -38,8 +38,8 @@ npm install
 ## Inicializando a aplicação
 
 ```bash
-npm run npm run dbserver # para subir o servidor
-npm run dev # para subir a aplicação
+npm run npm run dbserver # para subir o servidor na porta 4000
+npm run dev # para subir a aplicação na porta 3000
 ```
 
 ## Scripts disponíveis
@@ -85,7 +85,7 @@ Abra o endereço [http://localhost:3000](http://localhost:3000) em seu navegador
 
 O projeto foi deployado na [Vercel](https://vercel.com/), através do link: [clique aqui](https://pos-fiap-frnt-tc-financeiro.vercel.app/home).
 
-Porém limitações da Vercel, não é permitida nenhuma operação de I/O no arquivo. Apenas o GET.
+Por limitações da Vercel, não é permitida nenhuma operação de I/O no arquivo. Apenas o GET.
 
 ## Contribuindo
 

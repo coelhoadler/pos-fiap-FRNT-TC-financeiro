@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import AccountStatement from './AccountStatement';
+import { TransactionProviderWrapper } from '../transaction/TransactionProviderWrapper';
 
 const meta: Meta<typeof AccountStatement> = {
   title: 'Tech Challenge Components/AccountStatement',
@@ -28,7 +29,9 @@ export const Default: Story = {
   decorators: [
     (Story) => (
       <div className="flex flex-col w-full h-max gap-8 mx-auto p-5 bg-white rounded-[8px] shadow-md">
-        <Story />
+        <TransactionProviderWrapper>
+          <Story />
+        </TransactionProviderWrapper>
       </div>
     ),
   ],
