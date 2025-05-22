@@ -8,7 +8,7 @@
   },
   "account": {
     "accountNumber": "123456789",
-    "balance": 120967.82000000002,
+    "balance": 120958.95000000003,
     "currency": "BRL",
     "accountType": "Conta Corrente"
   },
@@ -41,16 +41,6 @@
     }
   ],
   "transactions": [
-    {
-      "typeTransaction": {
-        "id": "1",
-        "description": "Câmbio e Moedas"
-      },
-      "amount": "R$ 8,90",
-      "date": "2025-05-07T10:31:27.540Z",
-      "accountNumber": "123456789",
-      "id": "3844"
-    },
     {
       "id": "87fd",
       "typeTransaction": {
@@ -322,14 +312,14 @@
       "accountNumber": "123456789"
     },
     {
-      "id": "38d5",
       "typeTransaction": {
         "id": "3",
         "description": "Empréstimo e Financiamento"
       },
-      "amount": "R$ 3,33",
-      "date": "2025-05-16T04:50:39.518Z",
-      "accountNumber": "123456789"
+      "amount": "R$ 3,35",
+      "date": "2025-05-22T16:36:41.123Z",
+      "accountNumber": "123456789",
+      "id": "38d5"
     },
     {
       "typeTransaction": {
@@ -346,8 +336,8 @@
         "id": "2",
         "description": "DOC/TED"
       },
-      "amount": "R$ 0,08",
-      "date": "2025-05-22T01:11:06.308Z",
+      "amount": "R$ 0,09",
+      "date": "2025-05-22T16:31:20.113Z",
       "accountNumber": "123456789",
       "id": "cc81"
     },
