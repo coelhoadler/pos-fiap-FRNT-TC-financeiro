@@ -1,4 +1,10 @@
-## Autores do projeto 
+# 💸 Projeto Financeiro — Pós FIAP
+
+Este é um projeto feito com a biblioteca **Next.js**, cujo objetivo é representar as **transações financeiras** de um usuário.
+
+---
+
+## 👨‍💻 Autores do projeto 
 
 - [@Adler Coelho](https://www.linkedin.com/in/adlercoelhosantos/)
 - [@Erick Nunes](https://www.linkedin.com/in/erick-nunes-bb81a9136/)
@@ -6,43 +12,106 @@
 - [@Luiz Paulo](https://www.linkedin.com/in/luizpaulocaldas/) 
 - [@Virgílio Cano](https://www.linkedin.com/in/virgiliocano/)
 
-## Sobre o Projeto
+---
 
-Este é um projeto feito com a biblioteca Next.js, cujo objetivo é representar as transações financeiras de um usuário.
+## 🚀 Sobre o Projeto
 
-## Pré-requisitos
+O sistema permite **visualizar, editar, atualizar e excluir** transações financeiras por meio de uma interface moderna, construída com **Material UI (MUI)** e **Toast notifications**.
 
-Antes de começar, certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
+---
+
+## ✅ Funcionalidades
+
+- Visualização de transações financeiras
+- Criação, edição e exclusão de lançamentos
+- Diálogos com `@mui/material` para ações como editar ou confirmar exclusões
+- Feedback visual com `react-toastify` para todas as operações
+- Interface responsiva com TailwindCSS e MUI
+
+---
+
+## 🧱 Telas / Menus / Mensagerias
+
+### Telas
+
+- **Home**: Lista de transações
+
+  ![image](https://github.com/user-attachments/assets/fdd06f12-d465-4a29-805f-7980f2a1643e)
+
+- **Formulário**: Cadastro ou edição de lançamentos
+
+  ![image](https://github.com/user-attachments/assets/134c4af9-60c9-451e-ac2f-e5627089caba)
+
+- **Formulário**: Saldo
+
+  ![image](https://github.com/user-attachments/assets/bdecb2f8-fec1-434d-abe2-9d723eec239c)
+
+  
+  
+- **Confirmação**: Diálogo de exclusão com alerta
+
+### Menus
+
+- Navegação lateral com ícones
+
+  ![image](https://github.com/user-attachments/assets/2ff8d6a1-2c14-4278-bf4c-3fce9d6ddcaa)
+
+- Botões de ação (Adicionar, Editar, Excluir)
+  
+  ![image](https://github.com/user-attachments/assets/33576e58-e4bf-4b1d-8809-d6785ff1b3d9)
+  
+  ![image](https://github.com/user-attachments/assets/62bf808b-ceac-46e8-a885-732bedfdb828)
+
+  ![image](https://github.com/user-attachments/assets/a7f8d941-5143-45f7-9ce5-8ef9c0070b55)
+
+  ![image](https://github.com/user-attachments/assets/d868e156-0542-4e32-8a33-85c99b720c91)
+
+
+  
+
+
+
+### Mensagerias
+
+Mensagens amigáveis são exibidas via `Toast`:
+
+- 💾 "Transação atualizada com sucesso!"
+- 🗑️ "Transação excluída com sucesso!"
+- ⚠️ "Erro ao processar ação!"
+
+---
+
+## 📦 Pré-requisitos
+
+Antes de começar, certifique-se de ter as seguintes ferramentas instaladas:
 
 - **Node.js** (versão 16 ou superior)
 - **NPM** (versão 8 ou superior) ou **Yarn**
-- Um navegador moderno (como Google Chrome ou Firefox)
 
-Para verificar as versões instaladas, use os comandos:
+Verifique as versões com:
 
 ```bash
 node -v
 npm -v
-```
+````
 
-## Instalação
+## ⚙️ Instalação
 
-Clone o repositório e instale as dependências:
+- Clone o repositório e instale as dependências
 
 ```bash
 git clone https://github.com/coelhoadler/pos-fiap-FRNT-TC-financeiro.git
 cd pos-fiap-FRNT-TC-financeiro
 npm install
 ```
-
-## Inicializando a aplicação
+## ▶️ Inicializando a aplicação
 
 ```bash
-npm run npm run dbserver # para subir o servidor na porta 4000
-npm run dev # para subir a aplicação na porta 3000
+npm run dbserver  # Inicia o json-server na porta 4000
+npm run dev       # Inicia o frontend na porta 3000
 ```
 
-## Scripts disponíveis
+## 🔧 Scripts disponíveis
 
 - `npm run dev`: Inicia o servidor de desenvolvimento.
 - `npm run build`: Gera a versão de produção.
@@ -53,7 +122,7 @@ npm run dev # para subir a aplicação na porta 3000
 
 Abra o endereço [http://localhost:3000](http://localhost:3000) em seu navegador para ver o resultado.
 
-### Dependências principais (`dependencies`):
+### 📚 Principais dependências
 
 - **@emotion/react**: Biblioteca para estilização CSS-in-JS no React.
 - **@emotion/styled**: API para criar componentes estilizados com Emotion.
