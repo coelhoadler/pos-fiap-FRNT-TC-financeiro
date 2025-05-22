@@ -76,7 +76,6 @@ const FormTransaction = ({ onlyTransactionEditing }: TFormTransaction) => {
     if (id) {
       setValueWatched(valueEdit);
       setValue("typeTransaction", typeTransactionEdit.id);
-      setDialogType({ type: alertDialogTypes.EDIT })
     }
 
     if (!id) {
@@ -84,7 +83,6 @@ const FormTransaction = ({ onlyTransactionEditing }: TFormTransaction) => {
       setValue("value", "");
       setValue("typeTransaction", "");
       setTypeTransactionEdit({ id: "", description: "" });
-      setDialogType({ type: alertDialogTypes.CONFIRM })
     }
   }, [id, typeTransactionOptions]);
 
@@ -107,6 +105,7 @@ const FormTransaction = ({ onlyTransactionEditing }: TFormTransaction) => {
   };
 
   const handleConfirmSubmit = async () => {
+    
     if (!pendingFormData) return;
 
     if (id) {
@@ -145,8 +144,17 @@ const FormTransaction = ({ onlyTransactionEditing }: TFormTransaction) => {
   };
 
   const handleOnlyTransactionEditing = () => {     
-    if (onlyTransactionEditing) {
-          onlyTransactionEditing();
+    
+    if(id){
+      setDialogType({ type: alertDialogTypes.EDIT })    
+    }
+
+    if(!id){
+      setDialogType({ type: alertDialogTypes.CONFIRM })    
+    }
+
+    if (onlyTransactionEditing) {    
+        onlyTransactionEditing();
     }
   };
 

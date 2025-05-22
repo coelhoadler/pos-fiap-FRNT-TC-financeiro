@@ -8,7 +8,7 @@
   },
   "account": {
     "accountNumber": "123456789",
-    "balance": 120665.57,
+    "balance": 124031.32,
     "currency": "BRL",
     "accountType": "Conta Corrente"
   },
@@ -346,10 +346,40 @@
         "id": "3",
         "description": "Empréstimo e Financiamento"
       },
-      "amount": "R$ 0,04",
-      "date": "2025-05-16T05:28:55.263Z",
+      "amount": "R$ 3.333,42",
+      "date": "2025-05-22T01:01:11.304Z",
       "accountNumber": "123456789",
       "id": "acea"
+    },
+    {
+      "typeTransaction": {
+        "id": "1",
+        "description": "Câmbio e Moedas"
+      },
+      "amount": "R$ 32,22",
+      "date": "2025-05-22T01:06:36.684Z",
+      "accountNumber": "123456789",
+      "id": "9242"
+    },
+    {
+      "typeTransaction": {
+        "id": "2",
+        "description": "DOC/TED"
+      },
+      "amount": "R$ 0,08",
+      "date": "2025-05-22T01:11:06.308Z",
+      "accountNumber": "123456789",
+      "id": "cc81"
+    },
+    {
+      "typeTransaction": {
+        "id": "3",
+        "description": "Empréstimo e Financiamento"
+      },
+      "amount": "R$ 0,07",
+      "date": "2025-05-22T01:10:54.220Z",
+      "accountNumber": "123456789",
+      "id": "c54d"
     }
   ]
 }
