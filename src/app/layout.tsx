@@ -3,11 +3,12 @@ import './styles/globals.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { Roboto } from 'next/font/google';
 
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { getUserProfile } from '@/services/getUserProfile';
 import Header from './components/header/header';
 import { TransactionProvider } from './context/TransactionContext';
 import { DesktopMenu } from './components/menu/menu';
 import { ToastContainer } from "react-toastify";
-import { SpeedInsights } from "@vercel/speed-insights/next"
 import { StyledEngineProvider } from '@mui/material/styles';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -17,22 +18,24 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   title: 'Pós Tech FIAP - Challenge 1',
-  description: 'Tech Challenge 1 - FIAP',
+  description: 'Tech Challenge 1 - FIAP'
 };
 
-export default function RootLayout({
+export default async function ServerSidePage({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
+  const { name, error } = await getUserProfile();
+
   return (
     <html lang="pt-br" className="scroll-smooth">
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
       <body
         className={`${roboto.className} antialiased scroll-smooth`}
       >
-        <Header nameUser={'Joana da Silva Oliveira'} />
+        <Header nameUser={name} />
          <StyledEngineProvider injectFirst>
           <TransactionProvider>
             <ToastContainer

@@ -35,11 +35,18 @@ cd pos-fiap-FRNT-TC-financeiro
 npm install
 ```
 
+## Inicializando a aplicação
+
+```bash
+npm run npm run dbserver # para subir o servidor na porta 4000
+npm run dev # para subir a aplicação na porta 3000
+```
+
 ## Scripts disponíveis
 
 - `npm run dev`: Inicia o servidor de desenvolvimento.
 - `npm run build`: Gera a versão de produção.
-- `npm run start`: Inicia o servidor em produção.
+- `npm run start`: Inicia o servidor em produção na porta 4000.
 - `npm run dbserver`: Sobe o json-server para API fake.
 - `npm run storybook`: Inicia o Storybook para visualizar componentes.
 - `npm run test`: Executa os testes automatizados.
@@ -78,7 +85,7 @@ Abra o endereço [http://localhost:3000](http://localhost:3000) em seu navegador
 
 O projeto foi deployado na [Vercel](https://vercel.com/), através do link: [clique aqui](https://pos-fiap-frnt-tc-financeiro.vercel.app/home).
 
-Porém para usar o nosso __Back-end__ é necessário rodar o projeto localmente.
+Por limitações da Vercel, não é permitida nenhuma operação de I/O no arquivo. Apenas o GET.
 
 ## Contribuindo
 

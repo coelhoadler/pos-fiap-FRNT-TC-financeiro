@@ -61,9 +61,7 @@ const FormTransaction = ({ onlyTransactionEditing }: TFormTransaction) => {
     setValue,
     reset,
   } = useForm<IInputs>();
-  const [typeTransactionOptions, setTypeTransactionOptions] = useState<
-    ITypeTransaction[]
-  >([]);
+  const [typeTransactionOptions, setTypeTransactionOptions] = useState<ITypeTransaction[]>([]);
 
   const [valueWatched, setValueWatched] = useState<string>("");
 
@@ -178,6 +176,7 @@ const FormTransaction = ({ onlyTransactionEditing }: TFormTransaction) => {
     <form
       onSubmit={handleSubmit(onSubmit)}
       className="relative bg-gray-300 min-h-[633px] w-full min-w-[280px] rounded-[10px] shadow-md p-6 text-tertiary z-2"
+      id="transaction-form"
     >
       <Image
         width={146}

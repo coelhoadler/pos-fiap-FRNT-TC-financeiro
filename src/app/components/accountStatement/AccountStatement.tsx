@@ -19,10 +19,7 @@ type TAccountStatement = {
 export default function AccountStatement({
   onEditTransaction,
 }: TAccountStatement) {
-  const [updatedTransactions, setUpdatedTransactions] = useState<
-    ITransaction[]
-  >([]);
-
+  const [updatedTransactions, setUpdatedTransactions] = useState<ITransaction[]>([]);
   const { extract, transactionServices, setBalance } = useTransaction();
   const [dialogType, setDialogType] = useState<TAlertDialogType>({ type: alertDialogTypes.DELETE })
   const [id, setId] = useState<string>('')
