@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --animate-scaleIn: scaleIn 400ms ease-out 0s 1 normal forwards;
+  --animate-scaleOut: scaleOut 300ms ease-out 0s 1 normal forwards;
+
+  @keyframes scaleIn {
+    0% {
+      transform: scale(0);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes scaleOut {
+    0% {
+      transform: scale(1);
+    }
+
+    100% {
+      transform: scale(0);
+    }
+  }
+}

@@ -1,0 +1,13 @@
+
+@import "tailwindcss";
+
+@theme {
+    --filter-primary: brightness(0) saturate(100%) invert(22%) sepia(71%) saturate(854%) hue-rotate(152deg) brightness(92%) contrast(101%); 
+    --filter-inactive: brightness(0) saturate(100%) invert(93%) sepia(8%) saturate(169%) hue-rotate(136deg) brightness(100%) contrast(92%);
+    --filter-secondary: brightness(0) saturate(100%) invert(43%) sepia(29%) saturate(2302%) hue-rotate(332deg) brightness(97%) contrast(111%);
+    --filter-tertiary: brightness(0) saturate(100%) invert(18%) sepia(26%) saturate(522%) hue-rotate(146deg) brightness(95%) contrast(88%);
+    --filter-gray-100: brightness(0) saturate(100%) invert(99%) sepia(76%) saturate(196%) hue-rotate(232deg) brightness(111%) contrast(95%);
+    --filter-gray-200: brightness(0) saturate(100%) invert(100%) sepia(34%) saturate(2%) hue-rotate(276deg) brightness(112%) contrast(92%);
+    --filter-gray-300: brightness(0) saturate(100%) invert(89%) sepia(0%) saturate(1%) hue-rotate(162deg) brightness(93%) contrast(90%);
+    --filter-link: brightness(0) saturate(100%) invert(49%) sepia(72%) saturate(447%) hue-rotate(65deg) brightness(94%) contrast(87%);
+}
